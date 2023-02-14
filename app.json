@@ -1,5 +1,6 @@
 {
   "expo": {
+    "sdkVersion": "46.0.0",
     "name": "chemi-clean-mobile",
     "slug": "chemi-clean-mobile",
     "version": "1.0.0",
