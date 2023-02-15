@@ -1,0 +1,2 @@
+root: C:\ChemiCleanMobile\nvm
+path: C:\Program Files\nodejs
