@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/0b28a1f2-738a-49f1-8cf9-06ac427a851f"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -25,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.smereeotlhe.chemicleanmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -35,6 +37,9 @@
         "projectId": "0b28a1f2-738a-49f1-8cf9-06ac427a851f"
       }
     },
-    "owner": "smereeotlhe"
+    "owner": "smereeotlhe",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }

@@ -1,22 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Text, View, TextInput } from 'react-native';
+import data from './src/data';
+import updateData from './src/controller';
+import styles from './src/styles';
 
 export default function App() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
 
-  const handleNameChange = (text) => {
-    setName(text);
+  const handleNameChange = (value) => {
+    updateData('name', value);
   };
 
-  const handleEmailChange = (text) => {
-    setEmail(text);
-  };
-
-  const handleSubmit = () => {
-    // Handle form submission here
-    console.log(`Name: ${name}, Email: ${email}`);
+  const handleEmailChange = (value) => {
+    updateData('email', value);
   };
 
   return (
@@ -24,57 +20,21 @@ export default function App() {
       <Text style={styles.label}>Name</Text>
       <TextInput
         style={styles.input}
-        value={name}
+        value={data.name}
+        placeholder="Enter your name"
         onChangeText={handleNameChange}
       />
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
-        value={email}
+        value={data.email}
         onChangeText={handleEmailChange}
+        placeholder="Enter your email"
         keyboardType='email-address'
         autoCapitalize='none'
       />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSubmit}
-      >
-        <Text style={styles.buttonText}>Submit</Text>
-      </TouchableOpacity>
+      
+      <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  input: {
-    height: 40,
-    width: '100%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: 'blue',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-});
