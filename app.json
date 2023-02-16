@@ -14,7 +14,7 @@
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/0b28a1f2-738a-49f1-8cf9-06ac427a851f"
+      "url": "https://u.expo.dev/a9ac6bba-87c5-4970-9f01-07a67a814806"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -27,19 +27,20 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.smereeotlhe.chemicleanmobile"
+      "package": "com.joxicraft.chemicleanmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "0b28a1f2-738a-49f1-8cf9-06ac427a851f"
+        "projectId": "a9ac6bba-87c5-4970-9f01-07a67a814806"
       }
     },
-    "owner": "smereeotlhe",
+    "owner": "joxicraft",
     "runtimeVersion": {
       "policy": "sdkVersion"
     }
   }
 }
+
