@@ -15,7 +15,7 @@ export default StyleSheet.create({
       },
       input: {
         height: 40,
-        width: '100%',
+        width: '400%',
         borderColor: 'gray',
         borderWidth: 1,
         borderRadius: 5,
