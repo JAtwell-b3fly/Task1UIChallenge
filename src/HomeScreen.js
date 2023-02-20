@@ -1,2 +1,4 @@
 import Reactfrom  from "react";
-import * from ""
+import {headerTemplate} from './Header Template';
+
+headerTemplate();
