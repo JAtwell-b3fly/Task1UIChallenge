@@ -1,4 +1,13 @@
 import Reactfrom  from "react";
 import {headerTemplate} from './Header Template';
 
-headerTemplate();
+const homeScreen = () => {
+    return(
+        headerTemplate()
+
+
+    );
+
+
+};
+export default homeScreen;
