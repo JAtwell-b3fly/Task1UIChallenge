@@ -1,13 +1,19 @@
 import Reactfrom  from "react";
-import {headerTemplate} from './Header Template';
+import { View } from "react-native";
+import HeaderTemplate from './Header Template';
 
-const homeScreen = () => {
+export default function HomeScreen(){
+
     return(
-        headerTemplate()
+
+        <View>
+            <HeaderTemplate/>
+
+        </View>
+        
 
 
     );
 
 
-};
-export default homeScreen;
+}

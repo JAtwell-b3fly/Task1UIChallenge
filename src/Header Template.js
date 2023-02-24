@@ -1,46 +1,38 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Menu,Box,Pressable,ThreeDotsIcon} from 'native-base'
 
-// Function 
-const headerTemplate = () => {
+
+// Components
+export default function HeaderTemplate() {
   return (
-    <View id = 'headerContainer' style = {headerStyle.headerContainer}>
-        <view id = 'menuButtonContainer' >
-
-            <button id = 'menuButton' style = {headerStyle.menuButton}>
-                
-
-            </button>
-
-
-        </view>
-
-
-    </View>
-  );
-};
-
-
-
-// Styling
-const headerStyle = StyleSheet.create({
-
- headerContainer:{
-    color: 'light blue'
-
- },
- menuButtonContainer:{
-
- },
- menuButton:{
     
- }
+    <Box width = "100%" backgroundColor = "#18D0EA ">
+      <Menu trigger={triggerProps => {
+      return <Pressable accessibilityLabel="More options menu" {...triggerProps}>
+              <ThreeDotsIcon />
+            </Pressable>;
+    }}>
+      <Menu.Item>Product Listing</Menu.Item>
+      <Menu.Item>Order History</Menu.Item>
+      <Menu.Item>Wishlist</Menu.Item>
+      <Menu.Item>Safety Information</Menu.Item>
+      <Menu.Item>Customer Support</Menu.Item>
+      <Menu.Item>System Control Panel</Menu.Item>
+      <Menu.Item>Settings</Menu.Item>
+    
+      </Menu>
 
 
+    </Box>
+    
+  )
+}
 
-})
 
-// export to allow for importing template 
-module.exports = {
-    headerTemplate
-};
+// Component Functions
+
+ function openMenu()
+{
+
+}
+
