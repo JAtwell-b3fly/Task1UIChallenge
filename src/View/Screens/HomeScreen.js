@@ -1,15 +1,20 @@
-import Reactfrom  from "react";
-import { View } from "react-native";
-import HeaderTemplate from './Header Template';
+import React from  "react";
+import HeaderTemplate from "../Layouts/Header Layout Template";
+import { NativeBaseProvider } from "native-base";
 
 export default function HomeScreen(){
 
     return(
 
-        <View>
+        <NativeBaseProvider>
+
             <HeaderTemplate/>
 
-        </View>
+
+        </NativeBaseProvider>
+            
+
+        
         
 
 
