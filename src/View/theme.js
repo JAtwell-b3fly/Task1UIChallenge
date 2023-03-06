@@ -5,10 +5,10 @@ const theme = extendTheme(
             Heading:{
                 variants:{
                     title1:{
-                        bg: '#2BB71D '
+                        color: '#2BB71D'
                     },
                     title2:{
-                        bg: '#13CAB6 '
+                        color: '#13CAB6'
                     }
                 }
 

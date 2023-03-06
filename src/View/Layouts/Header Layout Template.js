@@ -1,30 +1,49 @@
 import React from 'react';
 import MenuButton from '../Components/Common/MenuButton';
-import {HStack,NativeBaseProvider,Heading} from 'native-base';
-import theme from '../theme';
-
+import {HStack,Box,VStack, Center} from 'native-base';
+import Logo from '../Components/Common/Logo';
+import CartButton from '../Components/Common/CartButton';
+import WishListButton from '../Components/WishListButton';
+import AccountButton from '../Components/Common/AccountButton';
 
 
 // Components
 export default function HeaderTemplate() {
   return (
-    <NativeBaseProvider theme={theme}>
-      
-      <HStack space = "1/3" w = "100%" alignItems = "center" bg = "#10C7E0" justifyContent = "space-between" safeArea >
-
-        <HStack>
-          <MenuButton/>
-        </HStack>
-        <HStack>
-          <Heading variant="title1" size = "4xl">CHEMI-</Heading>
-          <Heading variant="title2" size = "4xl">CLEAN</Heading>
-        </HStack>
-
+    
+      <Box py = "3"  >
+        
+        <VStack px = "2">
+          <Center justifyContent={"center"}>
+            <Logo/>
+          </Center>
+          
+        <HStack pl = "3" alignItems={"center"} justifyContent = "space-between">
+          
+          <MenuButton/> 
+          <HStack alignItems={"center"} >
+            
+          <CartButton/>
+          <WishListButton/>
+          <AccountButton/>
+          </HStack>
+         
+       
+        
       </HStack>
+
+        </VStack>
+        
+
+
+        
+        
+      </Box>
+      
       
 
 
-    </NativeBaseProvider>
+    
     
     
   )
