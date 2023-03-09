@@ -1,13 +1,13 @@
 import React from  "react";
-import HeaderTemplate from "../Layouts/Header Layout Template";
-import { NativeBaseProvider,Box } from "native-base";
 
+import {Box } from "native-base";
+import MButton from "../Components/Sub-Components/Button";
 export default function HomeScreen(){
 
     return(
             <Box>
-                <HeaderTemplate/>
-
+                
+                <MButton/>
 
             </Box>
             
