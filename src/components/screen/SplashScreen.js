@@ -1,38 +1,25 @@
 import React, { useEffect } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
-import Logo from '../assets/logo.png';
+// Importing the stylesheet
+import styles from './splashScreenStyles';
 
-const SplashScreen = () => {
-  const navigation = useNavigation();
+// Importing the logo image
+import logo from '../assets/logo.png';
 
+const SplashScreen = ({ navigation }) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.navigate('LoginScreen');
+    // Navigate to the login screen after 5 seconds
+    setTimeout(() => {
+      navigation.replace('Login');
     }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [navigation]);
+  }, []);
 
   return (
     <View style={styles.container}>
-      <Image source={Logo} resizeMode="contain" style={styles.logo} />
+      <Image source={logo} style={styles.logo} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-  },
-  logo: {
-    width: 300,
-    height: 300,
-  },
-});
 
 export default SplashScreen;
