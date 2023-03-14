@@ -1,5 +1,4 @@
 import React from 'react';
-import HomeScreen from './src/View/Screens/HomeScreen';
 import { NativeBaseProvider,Box,View } from 'native-base';
 
 export default function App() {
