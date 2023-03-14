@@ -1,18 +1,17 @@
 import React from 'react';
-import { View,Text } from 'react-native';
-import HomeScreen from './src/View/Screens/HomeScreen';
-import { NativeBaseProvider,ScrollView,Container,Box } from 'native-base';
-import theme from './src/View/theme';
+import { NativeBaseProvider,Box,View } from 'native-base';
+
 export default function App() {
 
   return (
-    <NativeBaseProvider  theme = {theme}>
-      <Box safeArea width = 'full' height = 'full' bgcolor = {"lightBlue.200"}>
-      <ScrollView>
-      <HomeScreen/>
-      </ScrollView>
+    <NativeBaseProvider>
+      <View >
+        <Box safeArea width = "100%" height = "100%" bgColor={"lightBlue.100"}>
 
-      </Box>
+        </Box>
+      
+      </View>
+      
       
       
           
