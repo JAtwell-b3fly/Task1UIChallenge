@@ -4,10 +4,7 @@ import 'firebase/compat/firestore';
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
-  // Your Firebase configuration object
 
-
-  
   apiKey: "AIzaSyB8j4kssGwk499iDtctbenuk-FcvtGgU2o",
   authDomain: "chemi-clean-app-backend.firebaseapp.com",
   databaseURL: "https://chemi-clean-app-backend-default-rtdb.firebaseio.com",
@@ -18,4 +15,8 @@ const firebaseConfig = {
   measurementId: "G-8YJMDZXX98"
 };
 firebase.initializeApp(firebaseConfig);
-export default firebase;
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+export { auth, db };
