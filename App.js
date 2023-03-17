@@ -1,18 +1,13 @@
 import React from 'react';
-import { NativeBaseProvider,Box,View } from 'native-base';
+import { NativeBaseProvider} from 'native-base';
+import TestScreen from './src/Screens/testScreen';
 
 export default function App() {
 
   return (
     <NativeBaseProvider>
-      <View >
-        <Box safeArea width = "100%" height = "100%" bgColor={"lightBlue.100"}>
-
-        </Box>
       
-      </View>
-      
-      
+      <TestScreen/>
       
           
         
