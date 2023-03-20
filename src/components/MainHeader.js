@@ -1,8 +1,10 @@
 import React from 'react';
-import {HStack,Box,VStack, Stack,Heading,Menu,Pressable,IconButton,Icon} from 'native-base';
+import {HStack,Box,VStack, Stack,Heading,Menu,Pressable,IconButton,Button,Icon} from 'native-base';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import MInput from './subcomponents/common/Input';
+import MButton from './subcomponents/common/Button';
 const menuItemsList = ["Product Listing","Order History","Settings"];
 
 
@@ -24,16 +26,16 @@ export default function HeaderComponent() {
   const menuOptions = renderMenuList();
   return (
     
-      <Box w = "100%" h = "100%">
+      
         
-        <VStack space = {3}> 
-          <Stack  direction = "row" justifyContent={"center"}>
+        <VStack flex = {1} space = {3}> 
+          <Stack flex = {5}  direction = "row" justifyContent={"center"}>
             <Heading size = "2xl" color = "#58C34D">CHEMI-</Heading>
             <Heading size = "2xl" color = "#68D2F9">CLEAN</Heading>
             
           </Stack>
           
-          <HStack alignItems={"center"} justifyContent = "space-between">
+          <HStack flex = {2} alignItems={"center"} justifyContent = "space-between">
             <Menu shadow={1}   trigger = {triggerProps => {
               return <Pressable ml = "5px" accessibilityLabel="More options menu" {...triggerProps} >
                 <FontAwesome5 name="grip-horizontal" size={24} color="black" />
@@ -75,6 +77,12 @@ export default function HeaderComponent() {
        
         
       </HStack>
+            
+          <Box borderColor={'#68B360'}  borderWidth = {"0.5"} flex = {3} alignItems={"center"}  bgColor= "#E2FDE0" >
+            <MInput bgColor = "white" inputRight = {<Button  justifyContent={"center"} w = "11.5%" variant={"ghost"} ><FontAwesome5  name="search"  color="#74CDCC" /></Button>}
+             flex = {1} width = "80%" variant = "outline" my = "0.5" placeHolder = {"Search"}/>
+            
+          </Box>  
 
         </VStack>
         
@@ -82,7 +90,7 @@ export default function HeaderComponent() {
 
         
         
-      </Box>
+      
       
       
 
