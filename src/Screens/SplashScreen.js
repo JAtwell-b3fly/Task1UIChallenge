@@ -11,7 +11,7 @@ const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     // Navigate to the login screen after 5 seconds
     setTimeout(() => {
-      navigation.replace('Login');
+      navigation.replace('Login'); TODO: `Don't lead the user straigh to login but rather into the app to immedlately purchase`
     }, 5000);
   }, []);
 
