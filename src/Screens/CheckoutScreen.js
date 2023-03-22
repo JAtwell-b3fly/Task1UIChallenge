@@ -1,10 +1,10 @@
 // Import necessary components and sub-components
-import Header from './Header';
-import ShippingForm from './ShippingForm';
-import BillingForm from './BillingForm';
-import PaymentForm from './PaymentForm';
-import Footer from './Footer';
-import style from './styles.css';
+import Header from './Header'; //import the custom created header component
+import Footer from "./Footer"; //import the custom created footer component
+import ShippingForm from './ShippingForm'; //import the custom created shipping form component
+import BillingForm from './BillingForm'; //import the custom created billing form component
+import PaymentForm from './PaymentForm'; //import the custom created payment form component
+import style from './styles.css'; //import the custom created stylesheet
 
 function CheckoutScreen() {
   // Define state variables and functions for handling form data

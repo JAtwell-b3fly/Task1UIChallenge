@@ -1,8 +1,8 @@
-import Header from './Header';
-import Footer from './Footer';
-import Filter from './Filter';
-import WishlistCatalogBox from './WishlistCatalogBox';
-import PaginationControl from './PaginationControl';
+import Header from './Header'; //import custom created header component
+import Footer from './Footer'; //import custom created footer component
+import Filter from './Filter'; //import custom created filter component
+import WishlistCatalogBox from './WishlistCatalogBox'; //import custom created wishlish catalogbox component
+import PaginationControl from './WishlistPagination'; //import custom created pagination control component
 
 import './wishlistStyles.css';
 

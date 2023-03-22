@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ProductImageGallery from './components/ProductImageGallery';
-import ProductTitle from './components/ProductTitle';
-import ProductRating from './components/ProductRating';
-import ProductPrice from './components/ProductPrice';
-import ProductDescription from './components/ProductDescription';
-import RatingForm from './components/RatingForm';
-import RelatedProducts from './components/RelatedProducts';
+import Header from './components/Header'; //import the custom created header component
+import Footer from './components/Footer'; //import the custom created footer component
+import ProductImageGallery from './components/ProductImageGallery'; //import the productsimagegallery component
+import ProductTitle from './components/ProductTitle'; //import the custom created product title sub-component
+import ProductRating from './components/ProductRating'; //import the product rating sub-component
+import ProductPrice from './components/ProductPrice'; //import the product price sub-component
+import ProductDescription from './components/ProductDescription'; //import the product description sub-component
+import RatingForm from './components/RatingForm'; //import the custom created rating form component
+import RelatedProducts from './components/RelatedProducts'; //import the custom created related products component
+import styles from './styles'; //import the custom stylesheet
 
 const ProductDescriptionScreen = (props) => {
   const [product, setProduct] = useState({});

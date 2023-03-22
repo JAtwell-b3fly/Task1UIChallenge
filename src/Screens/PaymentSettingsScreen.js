@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import ScreenNav from './ScreenNav';
-import PaymentSettingsFormView from './PaymentSettingsFormView';
-import PaymentSettingsForm from './PaymentSettingsForm';
+import Header from './Header'; //import the custom created header component
+import Footer from './Footer'; //import the custom created footer component
+import ScreenNav from './ScreenNav'; //import the custom created screennav buttons component
+import PaymentSettingsFormView from './PaymentSettingsFormView'; //import the custom created paymentsettings form-view component
+import PaymentSettingsForm from './PaymentSettingsForm'; //import the custom created paymentsettings form component
 import axios from 'axios';
+import styles from './styles'; //import the custom stylesheet
 
 const PaymentSettingsScreen = () => {
   const [editing, setEditing] = useState(false);

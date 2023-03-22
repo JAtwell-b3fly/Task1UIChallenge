@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import ScreenNav from './ScreenNav';
-import AccountForm from './AccountForm';
+import Header from './Header'; //import the custom created header component
+import Footer from "./Footer"; //import the custom created footer component
+import ScreenNav from './ScreenNav'; //import the custom created screennav buttons component
+import AccountForm from './AccountForm'; //import the custom created accountform component
 
 const AccountInformation = () => {
   const [isEditing, setIsEditing] = useState(false);

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import Avatar from './Avatar';
-import Logo from './Logo';
-import styles from './RegistrationStyles';
+import Avatar from './Avatar'; //import the custom created avatar component
+import Logo from './Logo'; //import the image of the logo
+import styles from './RegistrationStyles'; //import the custom stylesheet
 
 const RegistrationScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');

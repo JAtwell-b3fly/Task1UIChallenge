@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import ProductCart from "./ProductCart";
+import Header from "./Header"; //import the custom created header component
+import Footer from "./Footer"; //import the custom created footer component
+import ProductCart from "./ProductCart"; //import the custom created product cart component
 
 function ShoppingCart() {
   // Get cart data from database using API management tool

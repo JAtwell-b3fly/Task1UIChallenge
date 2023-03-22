@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Header from './Header'; //import the custom created header component
+import Footer from "./Footer"; //import the custom created footer component
 
 const OrderConfirmationScreen = ({ navigation }) => {
   const [shippingData, setShippingData] = useState(null);

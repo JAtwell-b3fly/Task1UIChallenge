@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './Header';
-import Filter from './Filter';
-import CatalogBox from './CatalogBox';
-import Tiles from './Tiles';
-import Footer from './Footer';
-import styles from './HomeScreenStyles.css';
+import Header from './Header'; //import the custom created header component
+import Filter from './Filter'; //import the custom created filter component
+import CatalogBox from './CatalogBox'; //import the custom created catalogbox component
+import Tiles from './Tiles'; //import the custom created tiles component
+import Footer from './Footer'; //import the custom created footer component
+import styles from './HomeScreenStyles.css'; //import the custom created stylesheet
 
 function HomeScreen() {
   return (

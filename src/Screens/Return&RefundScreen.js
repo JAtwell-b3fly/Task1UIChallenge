@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './components/Header';
-import ScreenNav from './components/ScreenNav';
-import ReturnPolicy from './components/ReturnPolicy';
-import ReturnForm from './components/ReturnForm';
+import Header from './components/Header'; //import custom created header component
+import ScreenNav from './components/ScreenNav'; //import custom created screennav buttons component
+import ReturnPolicy from './components/ReturnPolicy'; //import custom created return policy component
+import ReturnForm from './components/ReturnForm'; //import custom created return form component
 
 function ReturnAndRefundScreen() {
   return (

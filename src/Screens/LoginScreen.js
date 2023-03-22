@@ -3,11 +3,11 @@ import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'reac
 import { useNavigation } from '@react-navigation/native';
 
 // import external component files
-import Logo from './Logo';
-import Avatar from './Avatar';
+import Logo from './Logo'; //import the image of the company logo
+import Avatar from './Avatar'; //import the custom created avatar component
 
 // import external stylesheet
-import styles from './LoginStyles';
+import styles from './LoginStyles'; //import the custom created stylesheet
 
 const Login = () => {
   const navigation = useNavigation();
