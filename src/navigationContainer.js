@@ -10,7 +10,7 @@ function Navigation() {
   return (
     <NavigationContainer>
         <Stack.Navigator>
-            <Stack.Screen name = "Home" component = {TestScreen}/>
+            <Stack.Screen name = "Home" component = {TestScreen}  options={{ headerShown: false }}/>
         </Stack.Navigator>
         
       
