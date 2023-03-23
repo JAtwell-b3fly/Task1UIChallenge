@@ -9,8 +9,11 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer>
-        <Stack.Screen name = "Home" component = {TestScreen}/>
-      </Stack.Navigator>
+        <Stack.Navigator>
+            <Stack.Screen name = "Home" component = {TestScreen}/>
+        </Stack.Navigator>
+        
+      
     </NavigationContainer>
   );
 }
