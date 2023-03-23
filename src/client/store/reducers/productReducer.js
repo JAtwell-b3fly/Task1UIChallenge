@@ -12,7 +12,7 @@ import {
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_FAILURE,
     SELECT_PRODUCT,
-} from '../actions/productAction';
+} from '../../server/controller/actions/productAction';
 
 const initialState = {
     products: [],
