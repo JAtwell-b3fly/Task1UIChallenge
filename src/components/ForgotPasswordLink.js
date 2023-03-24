@@ -28,3 +28,5 @@ const ForgotPassword = () => {
         </VStack>
     </ScrollView>;
 };
+
+export default ForgotPassword;

@@ -21,3 +21,5 @@ const CreateANewAccount = () => {
         </VStack>
     </ScrollView>;
 };
+
+export default CreateANewAccount;

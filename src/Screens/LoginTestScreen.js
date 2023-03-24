@@ -1,8 +1,8 @@
-import { View, Box, Button, VStack } from "native-base";
-import HeaderComponent from "../components/MainHeader";
+import { View, Box, Button, VStack, Center } from "native-base";
 import MInput from "../components/subcomponents/common/Input";
 import MButton from "../components/subcomponents/common/Button";
 import { FontAwesome5 } from '@expo/vector-icons';
+import LoginSection from "../Layouts/LoginSection";
 
 export default function LoginTest() {
 
@@ -28,7 +28,7 @@ export default function LoginTest() {
 
                     //Login Section containing Login Form, Login Button, Create Account Button, Forgot Password Link
                     <Box flex={8} width = "100%" bg={"red.900"}>
-                        <Text>The Login Section</Text>
+                        <LoginSection />
                     </Box>
 
                 </Vstack>
@@ -36,4 +36,4 @@ export default function LoginTest() {
             </Box>
         </View>
     );
-}
+};
