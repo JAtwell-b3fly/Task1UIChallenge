@@ -14,7 +14,6 @@
     "axios": "^1.3.4",
     "expo": "^48.0.9",
     "expo-status-bar": "^1.4.2",
-<<<<<<< HEAD
     "expo-updates": "^0.14.7",
     "mysql2": "^3.2.0",
     "native-base": "^3.4.26",
@@ -26,7 +25,6 @@
     "react-native-svg": "12.3.0",
     "redux": "^4.2.1",
     "sequelize": "^6.29.3"
-=======
     "expo-updates": "^0.16.3",
     "native-base": "^3.4.26",
     "react": "^18.2.0",
@@ -36,7 +34,6 @@
     "react-native-screens": "~3.20.0",
     "react-native-svg": "^13.8.0",
     "redux": "^4.2.1"
->>>>>>> b62a6bcfc5a4726034d67ef5973bbd22079c9bf8
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
