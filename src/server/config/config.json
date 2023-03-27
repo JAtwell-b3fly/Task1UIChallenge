@@ -4,6 +4,6 @@
     "password": "Pa55w0rd123!",
     "database": "myfirstdatabase",
     "host": "myfirstdatabase.cpdahw04nfaz.eu-north-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql2"
   }
 }
