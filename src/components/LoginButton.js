@@ -21,3 +21,5 @@ const Login = () => {
         </VStack>
     </ScrollView>;
 };
+
+export default Login;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Container, Content, Button, Text, HStack, VStack } from 'native-base';
-import { Button } from "native-base";
 
 const ForgotPassword = () => {
     return <ScrollView showsVerticalScrollIndicator={false} px="3">
@@ -28,3 +27,5 @@ const ForgotPassword = () => {
         </VStack>
     </ScrollView>;
 };
+
+export default ForgotPassword;

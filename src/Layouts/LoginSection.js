@@ -1,10 +1,19 @@
 import React from 'react';
-import {Heading,Menu,Pressable,IconButton,Button,Icon,View} from 'native-base';
-import LogoImage from './';
+import {Button,View,Center,Left} from 'native-base';
 import LoginForm from '../components/LoginForm';
+import Login from '../components/LoginButton';
+import CreateANewAccount from '../components/subcomponents/CreateANewAccountButton';
+import ForgotPassword from '../components/ForgotPasswordLink';
 
 export default function LoginSection () {
     return(
-            
+        <View>
+            <Center>
+            <LoginForm />
+            <Login />
+            <CreateANewAccount />
+            <ForgotPassword alignSelf="flex-start"/>
+            </Center>
+        </View>    
     );
 };
