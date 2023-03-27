@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "ccm_user@*",
+    "password": "P@55w0rd123!",
+    "database": "remote-ccm",
+    "host": "remote-ccm.cpdahw04nfaz.eu-north-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
