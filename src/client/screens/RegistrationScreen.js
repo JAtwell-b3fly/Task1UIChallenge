@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+<<<<<<< Updated upstream
 import Avatar from './Avatar'; //import the custom created avatar component
 import Logo from './Logo'; //import the image of the logo
 import styles from './RegistrationStyles'; //import the custom stylesheet
+=======
+
+//import the external files
+import Header from './components/Header';
+import RegistrationForm from './components/RegistrationForm';
+import RegisterButton from './components/RegisterButton';
+import AlreadyHaveAccountLink from './components/AlreadyHaveAccountLink';
+import Avatar from './components/Avatar';
+import Logo from './assets/logo';
+import RegistrationLayout from './layouts/RegistrationLayout';
+import CreateAccountButton from '../components/CreateAccountButton';
+>>>>>>> Stashed changes
 
 const RegistrationScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -20,6 +33,7 @@ const RegistrationScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Logo style={styles.logo} />
       <Avatar style={styles.avatar} />
+<<<<<<< Updated upstream
       <View style={styles.form}>
         <TextInput
           style={styles.input}
@@ -69,6 +83,14 @@ const RegistrationScreen = ({ navigation }) => {
           <Text style={styles.loginLinkText}>Already have an account? Login here</Text>
         </TouchableOpacity>
       </View>
+=======
+      <RegistrationLayout />
+        <RegistrationForm />
+        <View>
+          <CreateAccountButton />
+          <AlreadyHaveAccountLink />
+        </View>
+>>>>>>> Stashed changes
     </View>
   );
 };
