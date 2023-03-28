@@ -3,8 +3,8 @@ import {Heading,Menu,Pressable,IconButton,Button,Icon} from 'native-base';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import MInput from './subcomponents/common/Input';
-import MButton from './subcomponents/common/Button';
+import MInput from './common/Input';
+import MButton from './common/Button';
 import { HeaderLayout } from '../Layouts/Header';
 const menuItemsList = ["Product Listing","Order History","Settings"];
 

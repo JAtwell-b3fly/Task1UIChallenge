@@ -1,10 +1,10 @@
 import { View, Box, Button, VStack, Center } from "native-base";
-import MInput from "../components/subcomponents/common/Input";
-import MButton from "../components/subcomponents/common/Button";
+import MInput from "../components/common/Input";
+import MButton from "../components/common/Button";
 import { FontAwesome5 } from '@expo/vector-icons';
 import LoginSection from "../Layouts/LoginSection";
 import Login from "../components/LoginButton";
-import CreateANewAccount from "../components/subcomponents/CreateANewAccountButton";
+import CreateANewAccount from "../components/CreateANewAccountButton";
 import ForgotPassword from "../components/ForgotPasswordLink";
 
 export default function LoginTest() {

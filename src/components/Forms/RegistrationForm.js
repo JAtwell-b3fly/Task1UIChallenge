@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
-import input from './subcomponents/input'; //import the form input sub-component
+import input from './input'; //import the form input sub-component
 
 const RegistrationForm = () => {
     return(

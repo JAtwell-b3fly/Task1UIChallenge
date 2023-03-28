@@ -1,7 +1,7 @@
 import { View, Box, Button, VStack } from "native-base";
 import HeaderComponent from "../components/MainHeader";
-import MInput from "../components/subcomponents/common/Input";
-import MButton from "../components/subcomponents/common/Button";
+import MInput from "../components/common/Input";
+import MButton from "../components/common/Button";
 import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function TestScreen() {
