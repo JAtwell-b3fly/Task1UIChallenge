@@ -1,7 +1,11 @@
 import { Box, VStack, HStack, View } from 'native-base';
 
 export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, headinglabel, catalogboxsection, tilessection }) => {
-  return (
+    const isHomeScreen = welcomesection !== undefined;
+    const isProductListingScreen = catalogboxsection !== undefined && !isHomeScreen;
+    const isWishlistScreen = !isHomeScreen && !isProductListingScreen;
+
+    return (
     <View>
       <Box bg="lightBlue.100" safeArea flex={1}>
         <Box>{/* Spacer */}</Box>
@@ -9,8 +13,8 @@ export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, 
           <Box>{headercomponent}</Box>
           <Box w="100%" px={4}>
             <HStack space={2} alignItems="center">
-              {categoryfilter && <Box flex={1}>{categoryfilter}</Box>}
-              {welcomesection && <Box flex={5}>{welcomesection}</Box>}
+                {isHomeScreen && categoryfilter && <Box flex={1}>{categoryfilter}</Box>} // category filter for home screen only
+                {isHomeScreen && welcomesection && <Box flex={5}>{welcomesection}</Box>} // welcome message for home screen only
             </HStack>
           </Box>
           <Box w="100%" px={4}>
@@ -23,7 +27,7 @@ export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, 
             )}
             {catalogboxsection}
           </Box>
-          {tilessection && (
+          { isHomeScreen && tilessection && (
             <Box w="100%" px={4}>
               <HStack space={4} alignItems="center">
                 {tilessection}
