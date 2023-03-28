@@ -1,11 +1,11 @@
 import { Container, Grid, Row, Col, View } from 'native-base';
 
-export const LoginLayout = ({ header, avatar, loginSection, registrationSection }) => {
+export const Group1Layout = ({ applogoheader, avatar, loginSection, registrationSection }) => {
   return (
     <Container padder>
       <Grid>
         <Row size={2}>
-          {header} //the image of the logo
+          {applogoheader} //the image of the logo
         </Row>
         <Row size={4}>
           <Col>
