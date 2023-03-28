@@ -11,7 +11,7 @@ return (
                         {header}
                     </Box>
 
-                    <Box  width = "100%" flex = {9}>
+                    <Box  width = "100%" flex = {8.5}>
                         {body}
                     </Box>
 
