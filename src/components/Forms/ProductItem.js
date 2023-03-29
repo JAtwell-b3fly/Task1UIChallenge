@@ -2,7 +2,7 @@ import { PILayout } from "./Layouts/productItem";
 import { CLabel } from "./common/Label";
 import { CIconButton } from "./common/IconButton";
 
-export const ProductItem = ({Image,Title,Description,Rating,CartButton,WishListButton,Price}) =>
+export const ProductItem = ({item}) =>
 {
     return(
         <PILayout
