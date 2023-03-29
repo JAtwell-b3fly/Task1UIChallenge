@@ -1,21 +1,23 @@
-import Header from './Header'; //import custom created header component
-import Footer from './Footer'; //import custom created footer component
-import Filter from './Filter'; //import custom created filter component
-import WishlistCatalogBox from './WishlistCatalogBox'; //import custom created wishlish catalogbox component
-import PaginationControl from './WishlistPagination'; //import custom created pagination control component
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-import './wishlistStyles.css';
+import Header from '../client/component/Layouts/Header'; //import custom created header component
+import CategoryFilter from '../client/component/Layouts/Filter'; //import the custom created filter component
+import WishlistCatalogBox from '../client/component/Layouts/CatalogBox'; //import custom created wishlish catalogbox component
+import HeadingLabel from '../client/component/Layouts/HeadingLabel'; //import the custom created Heading Label section component
+import { Group2Layout } from '../../Screens/Layouts/Group2LayoutTest';
 
-const wishlistScreen = `
-  <div class="wishlist-screen">
-    ${Header}
-    ${Filter}
-    <h1 class="wishlist-header">Wishlist</h1>
-    ${WishlistCatalogBox}
-    ${PaginationControl}
-    ${Footer}
-  </div>
-`;
+import styles from '../src/shared/WishlistScreenStyles.css'; //import the custom created stylesheet
+
+
+export default function WishlistScreen () {
+  return(
+    <Group2Layout headercomponent={<Header />}
+                  headinglabel={<HeadingLabel />}
+                  catalogboxsection={<CategoryFilter />}
+    />
+  );
+}
 
 const filterComponent = document.querySelector('#wishlist-filter');
 
@@ -44,5 +46,3 @@ paginationControl.addEventListener('swipe', (event) => {
     WishlistCatalogBox.showPreviousPage();
   }
 });
-
-export default wishlistScreen;

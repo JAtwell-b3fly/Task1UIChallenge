@@ -1,6 +1,10 @@
 import { Box, VStack, HStack, View } from 'native-base';
 
 export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, headinglabel, catalogboxsection, tilessection }) => {
+    //Home Screen: (headingcomponent,categoryfilter,welcomesection,headinglabel,catalogboxsection,tilessection)
+    //Product Listing Screen: (headingcomponent,categoryfilter,headinglabel,catalogboxsection)
+    //Wishlist Screen: (headingcomponent,headinglabel,catalogboxsection)
+    
     const isHomeScreen = welcomesection !== undefined;
     const isProductListingScreen = catalogboxsection !== undefined && !isHomeScreen;
     const isWishlistScreen = !isHomeScreen && !isProductListingScreen;
