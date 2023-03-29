@@ -1,16 +1,12 @@
 import { Heading,VStack,Box,ScrollView, HStack } from "native-base";
-
+import { ProductItem } from "./ProductItem";
 const products = [];
 
-function getProducts()
-{
-
-}
-
-function createItems()
+function getProducts() // fetches and parses data from API end-point into products array
 {
     
 }
+
 
 export const ProductList = ({title}) =>
 {
@@ -25,7 +21,13 @@ export const ProductList = ({title}) =>
         <Box m = "2" flex = {9}  borderRadius={"2xl"} borderWidth = {0.5}>
             <ScrollView flex = {1} pagingEnabled = {true}>
 
+                {
+                    products.map(product =>(
 
+                        <ProductItem key = {product.id} item={product}/>
+                    ))
+                }
+               
             </ScrollView>
 
         </Box>
