@@ -18,13 +18,13 @@ export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, 
             </HStack>
           </Box>
           <Box w="100%" px={4}>
-            {headinglabel && (
+            {/* {headinglabel && (
               <Box>
                 <Box py={2} borderBottomWidth={2}>
                   {headinglabel}
                 </Box>
               </Box>
-            )}
+            )}  */}
             {catalogboxsection}
           </Box>
           { isHomeScreen && tilessection && (
