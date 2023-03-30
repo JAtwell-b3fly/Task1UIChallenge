@@ -1,7 +1,8 @@
-import { View,HStack,VStack,Box } from "native-base"
+import { View, HStack,VStack,Box } from "native-base"
 export const PILayout = ({Image,Title,Description,Rating,CartButton,WishListButton,Price}) =>
 {
-    <View width={"200px"} borderRadius={"lg"} borderWidth = {0.5}>
+    return (
+    <View width = {"15%"} borderRadius={"lg"} borderWidth = {0.5}>
         <VStack flex = {1}>
             <Box  flex = {3} bgColor = {"white"}>
                 {Image}
@@ -28,4 +29,5 @@ export const PILayout = ({Image,Title,Description,Rating,CartButton,WishListButt
             </HStack>
         </VStack>
     </View>
+    );
 }
