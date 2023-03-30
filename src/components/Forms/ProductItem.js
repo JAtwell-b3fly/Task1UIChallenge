@@ -1,19 +1,19 @@
-import { PILayout } from "./Layouts/productItem";
-import { CLabel } from "./common/Label";
-import { CIconButton } from "./common/IconButton";
+import { PILayout } from "../Layouts/productItem";
+import { CLabel } from "../common/Label";
+import { CIconButton } from "../common/IconButton";
 import {Avatar} from 'native-base';
 import StarRating from 'react-native-star-rating'
-export const ProductItem = ({item}) =>
+export const ProductItem = (/* {item} */) =>
 {
-    const image = item.Image;
+    /* const image = item.Image;
     const title = item.Title;
     const rating = item.Rating;
     const desc = item.Description;
-    const price= item.Price;
+    const price= item.Price; */
    
     return(
         <PILayout
-            Image = {<Avatar size = {"xl"} source={{uri:{image}}}></Avatar>}
+            /* Image = {<Avatar size = {"xl"} source={{uri:{image}}}></Avatar>}
 
             Title = {<CLabel Label = {title}/>}
 
@@ -24,7 +24,7 @@ export const ProductItem = ({item}) =>
 
             WishListButton = {<CIconButton myIcon = "cards-heart"/>}
 
-            Price = {price}
+            Price = {price} */
         />
     );
 }

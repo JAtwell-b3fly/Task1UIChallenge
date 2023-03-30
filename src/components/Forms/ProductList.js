@@ -7,7 +7,15 @@ function getProducts() // fetches and parses data from API end-point into produc
     
 }
 
+/* const testProduct = {
+    Image:'https://images.unsplash.com/photo-1622614835318-7926e29f013c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
+    Title:'Anti Bacterial Hand Soap',
+    Rating:3,
+    Description:'',
+    Price:'R'+30.00
 
+
+}; */
 export const ProductList = ({title}) =>
 {
     return(
@@ -19,15 +27,15 @@ export const ProductList = ({title}) =>
 
         </HStack>
         <Box m = "2" flex = {9}  borderRadius={"2xl"} borderWidth = {0.5}>
-            <ScrollView flex = {1} pagingEnabled = {true}>
+            <ScrollView flex = {1} pagingEnabled = {true} flexDir = {"row"}>
 
-                {
+                {/* {
                     products.map(product =>(
 
                         <ProductItem key = {product.id} item={product}/>
                     ))
-                }
-               
+                } */}
+               <ProductItem /* item={testProduct} *//>
             </ScrollView>
 
         </Box>
