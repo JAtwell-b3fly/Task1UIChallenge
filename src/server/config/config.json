@@ -2,8 +2,8 @@
   "development": {
     "username": "admin",
     "password": "Pa55w0rd123!",
-    "database": "myfirstdatabase",
-    "host": "myfirstdatabase.cpdahw04nfaz.eu-north-1.rds.amazonaws.com",
-    "dialect": "mysql2"
+    "database": "products_db",
+    "host": "dev-ccm.cpdahw04nfaz.eu-north-1.rds.amazonaws.com",
+    "dialect": "mysql"
   }
 }
