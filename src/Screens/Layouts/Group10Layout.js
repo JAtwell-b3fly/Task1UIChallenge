@@ -1,43 +1,33 @@
-import { Container, Grid, Row, Col, View } from 'native-base';
+import { Container, VStack, HStack, Box, Heading, Text, Center } from 'native-base';
 
-export const Group10Layout = ({headercomponent2,screennavcomponent,headerlabel,refundpolicycomponent,sectionlabel,refundformsection}) => {
-
+export const Group10Layout = ({headercomponent2, screennavcomponent, headerlabel, refundpolicycomponent, sectionlabel, refundformsection}) => {
   return (
-    <View>
-      <Container>
-        <Grid>
-          <Row size={2}>
-            <Col>
-              {headercomponent2} //the header component used for the settings screens
-            </Col>
-          </Row>
-          <Row size={1}>
-            <Col>
-              {screennavcomponent} //the screen navigation component that contains the buttons to navigate to all the other setting screens
-            </Col>
-          </Row>
-          <Row size={1}>
-            <Col>
-              {headerlabel} //Header Label: Refund & Returns
-            </Col>
-          </Row>
-          <Row size={2}>
-            <Col>
-              {refundpolicycomponent} //Return Policy Component containing the full Refund Policy
-            </Col>
-          </Row>
-          <Row size={1}>
-            <Col>
-              {sectionlabel} //Section Label: Return & Refund Request Form
-            </Col>
-          </Row>
-          <Row size={3}>
-            <Col>
-              {refundformsection} //Return & Refund Request Form and the submit button
-            </Col>
-          </Row>
-        </Grid>
-      </Container>
-    </View>
-  );
+    <Container>
+      <VStack space={4} alignItems="center">
+        <Box>
+          {headercomponent2}
+        </Box>
+        <Box>
+          {screennavcomponent}
+        </Box>
+        <Box>
+          <Center>
+            <Heading size="lg">{headerlabel}</Heading> //Header Label: Return and Refund Policy
+          </Center>
+        </Box>
+        <Box>
+          {refundpolicycomponent} //The full complete Refund Policy
+        </Box>
+        <Spacer />
+        <Box>
+          <Center>
+            <Text fontSize="xl">{sectionlabel}</Text> //Section Label: Return and Refund Request Form
+          </Center>
+          <Box w="100%" p={4} borderWidth={1} borderColor="gray.200">
+            {refundformsection}
+          </Box>
+        </Box>
+      </VStack>
+    </Container>
+  )
 };

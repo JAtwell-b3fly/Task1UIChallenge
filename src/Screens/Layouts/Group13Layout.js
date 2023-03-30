@@ -1,81 +1,53 @@
-import { Grid, Container, Row, Col, View } from 'native-base';
+import { Container, VStack, HStack, Box, Text, Center } from 'native-base';
 
 export const Group13Layout = ({headercomponent,backbutton,headinglabel,sectionlabel,shippingformsection,shippingformviewsection,billingaddressformsection,billingaddressformviewsection,paymentmethodformsection,paymentmethodformviewsection,orderconfirmationcalculationsection}) => {
 
-  const isOrderConfirmation = !!orderconfirmationcalculationsection; // determine if the layout is for Order Confirmation screen
+const isOrderConfirmation = !!orderconfirmationcalculationsection; // determine if the layout is for Order Confirmation screen
 
   return (
     <Container>
-      <Grid>
-        <Row>
-          <Col>
-            {headercomponent}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-              {isOrderConfirmation ? null : backbutton}
-              <View>
-                <Text style={{textAlign: 'center'}}>{headinglabel}</Text>
-              </View>
-              <View style={{width: isOrderConfirmation ? '20%' : 'auto'}} />
-            </View>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <View>
-              <Text>{sectionlabel}</Text>
-            </View>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {isOrderConfirmation ? shippingformviewsection : shippingformsection}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <View>
-              <Text>{sectionlabel}</Text>
-            </View>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {isOrderConfirmation ? billingaddressformviewsection : billingaddressformsection}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <View>
-              <Text>{sectionlabel}</Text>
-            </View>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {isOrderConfirmation ? paymentmethodformviewsection : paymentmethodformsection}
-          </Col>
-        </Row>
-        {isOrderConfirmation && 
-          <Row>
-            <Col>
-              <View>
-                <Text>{sectionlabel}</Text>
-              </View>
-            </Col>
-          </Row>
+      <VStack space={4}>
+        <Box>
+          {headercomponent}
+        </Box>
+        <HStack space={4} alignItems="center" justifyContent="space-between">
+          {isOrderConfirmation ? null : backbutton}
+          <Box>
+            <Center>
+              <Text textAlign="center">{headinglabel}</Text> //Checkout or Order Confirmation
+            </Center>
+          </Box>
+          <Box width={isOrderConfirmation ? '20%' : 'auto'} />
+        </HStack>
+        <Box>
+          <Text>{sectionlabel}</Text> //Shipping Information
+        </Box>
+        <Box>
+          {isOrderConfirmation ? shippingformviewsection : shippingformsection}
+        </Box>
+        <Box>
+          <Text>{sectionlabel}</Text> //Billing Information
+        </Box>
+        <Box>
+          {isOrderConfirmation ? billingaddressformviewsection : billingaddressformsection}
+        </Box>
+        <Box>
+          <Text>{sectionlabel}</Text> //Payment Method
+        </Box>
+        <Box>
+          {isOrderConfirmation ? paymentmethodformviewsection : paymentmethodformsection}
+        </Box>
+        {isOrderConfirmation &&
+          <Box>
+            <Text>{sectionlabel}</Text> //Order Summary
+          </Box>
         }
-        {isOrderConfirmation && 
-          <Row>
-            <Col>
-              {orderconfirmationcalculationsection}
-            </Col>
-          </Row>
+        {isOrderConfirmation &&
+          <Box>
+            {orderconfirmationcalculationsection}
+          </Box>
         }
-      </Grid>
+      </VStack>
     </Container>
   );
-};
+}

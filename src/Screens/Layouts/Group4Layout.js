@@ -1,30 +1,29 @@
-import { Container, Grid, Row, Col } from 'react-bootstrap';
+import { Container, VStack, HStack, Box } from 'react-bootstrap';
 
 export const Group4Layout = ({ headercomponent, backbutton, headinglabel, cartsection, calculationsection, continueshoppingbutton, checkoutbutton }) => {
 
-  return (
-    <Container fluid>
-      <Row className="justify-content-center">
-        <Col md={8}>
-          {headercomponent} //header component
-        </Col>
-      </Row>
-      <Row className="justify-content-center mt-3">
-        <Col md={8}>
-          <Row>
-            <Col xs={12} md={8}>
-              {backbutton} //back button to navigate to the previous screen which can be any screen //left aligned
-              {headinglabel} //heading label: Shopping Cart //center aligned
-              {cartsection} //cart section displaying the list of products in the cart section
-            </Col>
-            <Col xs={12} md={4}>
-              {calculationsection} //calculation section where the subtotal, grand total, tax will be calculated
-              {continueshoppingbutton} //continue shopping button to navigate to the Product Listing Screen //left aligned
-              {checkoutbutton} //checkout button to navigate to the Order Confirmation Screen //right aligned
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
-  );
-}
+return (
+  <Container fluid>
+    <VStack spacing={4} alignItems="stretch">
+      <Box>{headercomponent}</Box>
+      <Box>
+        <HStack justifyContent="space-between">
+          <Box>{backbutton}</Box> //back icon button//left aligned
+          <Box>{headinglabel}</Box> //Heading Label: Shopping Cart //center aligned
+        </HStack>
+      </Box>
+      <Box>
+        <Box className="text-center">{headinglabel}</Box>
+          {cartsection}
+      </Box>
+      <Box>{calculationsection}</Box>
+      <Box>
+        <HStack justifyContent="space-between">
+          <Box>{continueshoppingbutton}</Box>//left algined
+          <Box>{checkoutbutton}</Box>//right aligned
+        </HStack>
+      </Box>
+    </VStack>
+  </Container>
+);
+};
