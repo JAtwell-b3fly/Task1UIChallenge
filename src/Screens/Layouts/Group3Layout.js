@@ -1,6 +1,6 @@
 import { Box, Center, Grid, Heading, HStack, Spacer, Text, VStack } from 'native-base';
 
-export const ProductDetailsLayout = ({ headerComponent, productGallery, productName, productDescription, productPrice, addToCart, addToWishlist, modeReviewAndAvgRating, ratingsAndReviewFormSection, safetyInformationSection, backButton,headinglabel, catalogboxsection }) => {
+export const Group3Layout = ({ headerComponent, productGallery, productName, productDescription, productPrice, addToCart, addToWishlist, modeReviewAndAvgRating, ratingsAndReviewFormSection, safetyInformationSection, backButton,headinglabel, catalogboxsection }) => {
   return (
     <Box bg="lightBlue.100" safeArea flex={1}>
       <VStack flex={1} alignItems="center" pt={6}>

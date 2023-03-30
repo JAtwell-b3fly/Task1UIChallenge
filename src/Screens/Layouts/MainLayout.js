@@ -7,11 +7,11 @@ return (
     <View>
             <Box  width = "100%" height = "100%" bgColor={"lightBlue.100"} safeArea  >
                 <VStack flex = {1}>
-                    <Box  width = "100%" flex = {2}>
+                    <Box  width = "100%" flex = {1.5}>
                         {header}
                     </Box>
 
-                    <Box  width = "100%" flex = {8}>
+                    <Box  width = "100%" flex = {8.5}>
                         {body}
                     </Box>
 

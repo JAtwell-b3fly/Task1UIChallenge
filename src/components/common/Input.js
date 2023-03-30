@@ -1,6 +1,6 @@
 import { Input } from "native-base";
 
-const MInput = (props) => {
+export const MInput = (props) => {
     const {bgColor,flex,h,my,onChange,width,variant,placeHolder,size,type,isReadOnly,isInvalid,inputLeft,inputRight,isRequired,inFocusColor,isInvalidColor} = props
     return (
 
