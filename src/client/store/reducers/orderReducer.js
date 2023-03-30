@@ -1,33 +1,52 @@
-import {
-    CREATE_ORDER_REQUEST,
-    CREATE_ORDER_SUCCESS,
-    CREATE_ORDER_FAILURE,
-    FETCH_ORDERS_REQUEST,
-    FETCH_ORDERS_SUCCESS,
-    FETCH_ORDERS_FAILURE,
-} from '../actions/orderActions';
+import * as ActionTypes from '../constants/actionTypes';
 
 const initialState = {
+    isLoading: false,
     orders: [],
-    loading: false,
-    error: null,
+    errMess: null
 };
 
-const orderReducer = (state = initialState, action) => {
+export const orderReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CREATE_ORDER_REQUEST:
-        case FETCH_ORDERS_REQUEST:
-            return { ...state, loading: true, error: null };
-        case CREATE_ORDER_SUCCESS:
-            return { ...state, orders: [...state.orders, action.payload], loading: false };
-        case FETCH_ORDERS_SUCCESS:
-            return { ...state, orders: action.payload, loading: false };
-        case CREATE_ORDER_FAILURE:
-        case FETCH_ORDERS_FAILURE:
-            return { ...state, loading: false, error: action.payload };
+        case ActionTypes.PLACE_ORDER_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                errMess: null
+            };
+        case ActionTypes.PLACE_ORDER_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                errMess: null,
+                orders: state.orders.concat(action.payload)
+            };
+        case ActionTypes.PLACE_ORDER_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                errMess: action.payload
+            };
+        case ActionTypes.FETCH_ORDERS_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                errMess: null
+            };
+        case ActionTypes.FETCH_ORDERS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                errMess: null,
+                orders: action.payload
+            };
+        case ActionTypes.FETCH_ORDERS_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                errMess: action.payload
+            };
         default:
             return state;
     }
 };
-
-export default orderReducer;

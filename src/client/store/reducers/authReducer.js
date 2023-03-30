@@ -1,59 +1,50 @@
 import {
-    LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAILURE,
-    LOGOUT_USER_SUCCESS,
-    LOGOUT_USER_FAILURE,
-    REGISTER_USER_SUCCESS,
-    REGISTER_USER_FAILURE,
-} from '../actions/authActions';
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT,
+    REGISTER_REQUEST,
+    REGISTER_SUCCESS,
+    REGISTER_FAILURE,
+} from '../constants/actionTypes';
 
 const initialState = {
-    isAuthenticated: false,
     user: null,
     error: null,
+    loading: false,
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_USER_SUCCESS:
+        case LOGIN_REQUEST:
+        case REGISTER_REQUEST:
             return {
                 ...state,
-                isAuthenticated: true,
+                error: null,
+                loading: true,
+            };
+        case LOGIN_SUCCESS:
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
                 user: action.payload,
                 error: null,
+                loading: false,
             };
-        case LOGIN_USER_FAILURE:
+        case LOGIN_FAILURE:
+        case REGISTER_FAILURE:
             return {
                 ...state,
-                isAuthenticated: false,
                 user: null,
                 error: action.payload,
+                loading: false,
             };
-        case LOGOUT_USER_SUCCESS:
+        case LOGOUT:
             return {
                 ...state,
-                isAuthenticated: false,
                 user: null,
                 error: null,
-            };
-        case LOGOUT_USER_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-            };
-        case REGISTER_USER_SUCCESS:
-            return {
-                ...state,
-                isAuthenticated: true,
-                user: action.payload,
-                error: null,
-            };
-        case REGISTER_USER_FAILURE:
-            return {
-                ...state,
-                isAuthenticated: false,
-                user: null,
-                error: action.payload,
+                loading: false,
             };
         default:
             return state;
