@@ -1,47 +1,33 @@
 import React from 'react';
-import {Box, Stack,ScrollView,FormControl,Input,Divider} from 'native-base';
-
+import {VStack,FormControl} from 'native-base';
+import {CInput} from './common/Input';
+import {CButton} from './common/Button';
+import {CLink} from './common/Link';
+import LFLayout from './Layouts/LoginForm';
 const LoginForm = () => {
-    return <ScrollView w="100%">
-        <Stack space={2.5} alignSelf="center" px="4" safeArea mt="4" w={{
-            base: "100%",
-            md: "25%"
-        }}>
-            <Box alignItems="center">
-                <Box w="100%" maxWidth="300px">
-                    <FormControl isRequired>
-                        <Stack mx="4">
+    return 
+        (
+            <LFLayout
+                form = {
+                    <FormControl >
+                        
                         <FormControl.Label>Email Address</FormControl.Label>
-                        <Input type="email address" defaultValue="example@gmail.com" placeholder="example@gmail.com" />
-                        <FormControl.HelperText>
-                            Must be a valid email address.
-                        </FormControl.HelperText>
-                        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-                            A valid email address is required.
-                        </FormControl.ErrorMessage>
-                        </Stack>
-                    </FormControl>
-                    <Divider />
-                </Box>
-
-                <Box>
-                    <FormControl isRequired>
-                        <Stack mx="4">
+                        <CInput  placeHolder="Email Address" />
                         <FormControl.Label>Password</FormControl.Label>
-                        <Input type="password" defaultValue="12345" placeholder="password" />
-                        <FormControl.HelperText>
-                            Must be atleast 8 characters.
-                        </FormControl.HelperText>
-                        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-                            Atleast 8 characters are required.
-                        </FormControl.ErrorMessage>
-                        </Stack>
+                        <CInput type="Password"  placeHolder="Password" />
                     </FormControl>
-                </Box>
-            </Box>
-        </Stack>
-    </ScrollView>
-  };
+                }
+                buttons = {
+                        <VStack>
+                            <CButton Text = {"Login"}/>
+                            <CButton size = {"sm"} Text = {"Create Acount"}/>
+                        </VStack>
+                }
+
+                link = {<CLink onPress = {}>Forgot Password?</CLink>}
+            />
+        );
+  }
 
   export default LoginForm;
 
@@ -59,7 +45,7 @@ const LoginForm = () => {
                 style={styles.input}
                 value={email}
                 onChangeText={setEmail}
-                placeholder="Enter your email address"
+                placeHolder="Enter your email address"
                 autoCapitalize="none"
                 keyboardType="email-address"
             />
@@ -68,7 +54,7 @@ const LoginForm = () => {
                 style={styles.input}
                 value={password}
                 onChangeText={setPassword}
-                placeholder="Enter your password"
+                placeHolder="Enter your password"
                 secureTextEntry
             />
         </View>
