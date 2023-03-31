@@ -1,54 +1,38 @@
-import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    LOGOUT,
-    REGISTER_REQUEST,
-    REGISTER_SUCCESS,
-    REGISTER_FAILURE,
-} from '../constants/actionTypes';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL } from '../constants/actionTypes';
 
 const initialState = {
+    isAuthenticated: false,
     user: null,
-    error: null,
-    loading: false,
+    error: null
 };
 
-const authReducer = (state = initialState, action) => {
+export default function authReducer(state = initialState, action) {
     switch (action.type) {
-        case LOGIN_REQUEST:
-        case REGISTER_REQUEST:
-            return {
-                ...state,
-                error: null,
-                loading: true,
-            };
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
             return {
                 ...state,
+                isAuthenticated: true,
                 user: action.payload,
-                error: null,
-                loading: false,
+                error: null
             };
-        case LOGIN_FAILURE:
-        case REGISTER_FAILURE:
+        case LOGIN_FAIL:
+        case REGISTER_FAIL:
             return {
                 ...state,
+                isAuthenticated: false,
                 user: null,
-                error: action.payload,
-                loading: false,
+                error: action.payload
             };
-        case LOGOUT:
+        case LOGOUT_SUCCESS:
             return {
                 ...state,
+                isAuthenticated: false,
                 user: null,
-                error: null,
-                loading: false,
+                error: null
             };
         default:
             return state;
     }
-};
+}
 
-export default authReducer;

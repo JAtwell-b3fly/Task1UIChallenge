@@ -1,11 +1,11 @@
 // Authentication actions
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const REGISTER_REQUEST = 'REGISTER_REQUEST';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const USER_LOADED = 'USER_LOADED';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const REGISTER_FAILURE = 'REGISTER_FAILURE';
-export const LOGOUT = 'LOGOUT';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const AUTH_ERROR = 'AUTH_ERROR';
 
 // Cart actions
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -14,12 +14,13 @@ export const UPDATE_CART_QUANTITY = 'UPDATE_CART_QUANTITY';
 export const CLEAR_CART = 'CLEAR_CART';
 
 // Product actions
-export const FETCH_PRODUCTS_REQUEST = 'FETCH_PRODUCTS_REQUEST';
-export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
-export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
-export const ADD_PRODUCT_REQUEST = 'ADD_PRODUCT_REQUEST';
-export const ADD_PRODUCT_SUCCESS = 'ADD_PRODUCT_SUCCESS';
-export const ADD_PRODUCT_FAILURE = 'ADD_PRODUCT_FAILURE';
+
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const GET_PRODUCT = 'GET_PRODUCT';
+export const ADD_PRODUCT = 'FADD_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+
 
 // Order actions
 export const PLACE_ORDER_REQUEST = 'PLACE_ORDER_REQUEST';

@@ -1,62 +1,65 @@
-import axios from 'axios';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from '../constants/actionTypes';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR } from '../constants/actionTypes';
+import authService from '../../../shared/services/authService';
 
-// Action creators for login request
-export const loginRequest = () => ({
-    type: LOGIN_REQUEST
-});
-
-// Action creators for login success
-export const loginSuccess = (user) => ({
-    type: LOGIN_SUCCESS,
-    payload: user
-});
-
-// Action creators for login failure
-export const loginFailure = (error) => ({
-    type: LOGIN_FAILURE,
-    payload: error
-});
-
-// Action creators for register request
-export const registerRequest = () => ({
-    type: REGISTER_REQUEST
-});
-
-// Action creators for register success
-export const registerSuccess = (user) => ({
-    type: REGISTER_SUCCESS,
-    payload: user
-});
-
-// Action creators for register failure
-export const registerFailure = (error) => ({
-    type: REGISTER_FAILURE,
-    payload: error
-});
-
-// Async action creator for login
-export const loginUser = (email, password) => {
-    return async (dispatch) => {
-        try {
-            dispatch(loginRequest());
-            const response = await axios.post('/api/auth/login', { email, password });
-            dispatch(loginSuccess(response.data));
-        } catch (error) {
-            dispatch(loginFailure(error.message));
-        }
-    };
+// Load user
+export const loadUser = () => async dispatch => {
+    try {
+        const res = await authService.getCurrentUser();
+        dispatch({
+            type: USER_LOADED,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR
+        });
+    }
 };
 
-// Async action creator for registration
-export const registerUser = (userData) => {
-    return async (dispatch) => {
-        try {
-            dispatch(registerRequest());
-            const response = await axios.post('/api/auth/register', userData);
-            dispatch(registerSuccess(response.data));
-        } catch (error) {
-            dispatch(registerFailure(error.message));
-        }
-    };
+// Register user
+export const register = ({ name, surname, email, password }) => async dispatch => {
+    const newUser = { name, surname, email, password };
+    try {
+        const res = await authService.registerUser(newUser);
+        dispatch({
+            type: REGISTER_SUCCESS,
+            payload: res.data
+        });
+        dispatch(loadUser());
+    } catch (err) {
+        dispatch({
+            type: REGISTER_FAIL,
+            payload: err.response.data.msg
+        });
+    }
+};
+
+// Login user
+export const login = ({ email, password }) => async dispatch => {
+    const user = { email, password };
+    try {
+        const res = await authService.loginUser(user);
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+        });
+        dispatch(loadUser());
+    } catch (err) {
+        dispatch({
+            type: LOGIN_FAIL,
+            payload: err.response.data.msg
+        });
+    }
+};
+
+// Logout user
+export const logout = () => async dispatch => {
+    try {
+        await authService.logoutUser();
+        dispatch({
+            type: LOGOUT_SUCCESS
+        });
+    } catch (err) {
+        console.error(err);
+    }
 };
