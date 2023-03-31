@@ -10,7 +10,7 @@ import loginSection from './LoginSection'; //import the login section that conta
 
 // import external stylesheet
 import styles from '../src/LoginStyles.css'; //import the custom created stylesheet
-import { Group1Layout } from '../../Screens/Layouts/Group1Layout';
+import { Group1Layout } from './Layouts/Group1Layout';
 
 //Actions
 const navigation = useNavigation();
