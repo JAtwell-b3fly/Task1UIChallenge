@@ -4,10 +4,10 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 //import the external files
 import Avatar from './components/Avatar';
 import Logo from './assets/logo';
-import registrationSection from './components/RegistrationSection';
+import RegistrationForm from './Forms';
 
 import styles from './RegistrationStyles'; //import the custom stylesheet
-import { Group1Layout } from '../../Screens/Layouts/Group1Layout';
+import { Group1Layout } from './Layouts/Group1Layout';
 
 //Actions
 const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ export default function RegistrationScreen () {
   return (
     <Group1Layout applogoheader={<Logo />}
                   avatar={<Avatar />}
-                  registrationSection={<registrationSection />}
+                  registrationSection={<RegistrationForm/>}
     />
   );
 };
