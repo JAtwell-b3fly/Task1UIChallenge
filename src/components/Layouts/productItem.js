@@ -2,31 +2,35 @@ import { View, HStack,VStack,Box } from "native-base"
 export const PILayout = ({Image,Title,Description,Rating,CartButton,WishListButton,Price}) =>
 {
     return (
-    <View width = {"15%"} borderRadius={"lg"} borderWidth = {0.5}>
-        <VStack flex = {1}>
-            <Box  flex = {3} bgColor = {"white"}>
+    <View  position={"relative"} ml = {2} mr = {1} mb = {3}  mt = {8} width = {"150px"} height = {"200px"} borderRadius={"lg"} borderWidth = {0.5}>
+        <VStack m = {1} flex = {1} >
+            <Box alignItems = {"center"}  position={"absolute"} bottom = {"170px"}  width = {"100%"} height = {"55px"} >
                 {Image}
             </Box>
-            <Box flex = {0.5} bgColor = {"grey.800"}>
+            <Box mt = "30px"> 
+                <Box alignItems = {"center"} width = {"100%"} height = {"40px"}  >
                 {Title}
-            </Box>
-            <Box flex = {2.5} bgColor = {"brown.800"}>
+                </Box>
+                <Box  width = {"100%"} height = {"60px"}  >
                 {Description}
-            </Box>
-            <Box flex = {1.5} bgColor = {"yellow.800"}>
+                 </Box>
+                <Box width = {"50%"}  height = {"10px"} >
                 {Rating}
-            </Box>
-            <Box flex = {0.5} bgColor = {"green.800"}>
+                </Box>
+                <Box width = {"100%"} height = {"20px"} >
                 {Price}
-            </Box>
-            <HStack flex = {2} >
-                <Box bgColor = {"blue.800"}>
-                    {CartButton}
                 </Box>
-                <Box bgColor = {"red.800"}>
-                    {WishListButton}
-                </Box>
+                <HStack width = {"100%"}  height = {"25px"}>
+                    <Box  w = "50%" >
+                        {CartButton}
+                    </Box>
+                    <Box  w = "50%" >
+                        {WishListButton}
+                    </Box>
             </HStack>
+
+            </Box>
+            
         </VStack>
     </View>
     );
