@@ -1,20 +1,20 @@
 import React from 'react';
-import Header from './components/Header'; //import custom created header component
-import ScreenNav from './components/ScreenNav'; //import custom created screennav buttons component
-import ReturnPolicy from './components/ReturnPolicy'; //import custom created return policy component
-import ReturnForm from './components/ReturnForm'; //import custom created return form component
 
-function ReturnAndRefundScreen() {
+import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import custom created header component
+import ScreenNav from './client/components/Layouts/ScreenNav'; //import custom created screennav buttons component
+import ReturnPolicy from './client/components/Layouts/ReturnPolicy'; //import custom created return policy component
+import ReturnForm from './client/components/Forms/ReturnForm'; //import custom created return form component
+import { CLabel } from '../../components/common/Label';
+import { Group10Layout } from '../../Screens/Layouts/Group10Layout';
+
+export default function ReturnAndRefundScreen() {
   return (
-    <div className="return-and-refund-screen">
-      <Header title="Return and Refunds" />
-      <ScreenNav />
-      <ReturnPolicy />
-      <h2 className="return-form-heading">Return and Refund Form</h2>
-      <ReturnForm />
-      <button className="submit-button">Submit</button>
-    </div>
+    <Group10Layout headercomponent2={<SecondHeaderLayout />}
+                  screennavcomponent={<ScreenNav />}
+                  headerlabel={<CLabel />}
+                  refundpolicycomponent={<ReturnPolicy />}
+                  sectionlabel={<CLabel />}
+                  refundformsection={<ReturnForm />}
+    />
   );
 }
-
-export default ReturnAndRefundScreen;

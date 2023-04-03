@@ -5,8 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 // import external component files
 import Logo from './assets/Logo'; //import the image of the company logo
 import Avatar from './Avatar'; //import the custom created avatar component
-import loginSection from './LoginSection'; //import the login section that contains the login form, 2 buttons and a link
-
+import LoginSection from '../../components/Forms/LoginForm';
 
 // import external stylesheet
 import styles from '../src/LoginStyles.css'; //import the custom created stylesheet
@@ -36,7 +35,7 @@ export default function LoginScreen () {
   return (
     <Group1Layout applogoheader={<Logo />}
                   avatar={<Avatar />}
-                  loginSection={<loginSection />}
+                  loginSection={<LoginSection />}
     />
   )
 };

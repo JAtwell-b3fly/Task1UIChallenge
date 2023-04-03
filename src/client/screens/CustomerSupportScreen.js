@@ -1,14 +1,18 @@
-// Import necessary components and styles
-import Header from './Header'; //import the custom created new header component
-import Footer from './Footer'; //import the custom created footer component
-import ScreenNav from './ScreenNav'; //import the custom created screennav component
-import CustomerSupportForm from './CustomerSupportForm'; //import the custom created customersupport form view component
-import FeedbackForm from './FeedbackForm'; //import the custom created feedback form component
-import FAQ from './FAQ'; //import the cusotm created FAQ component
-import styles from './CustomerSupport.css'; //import the external stylesheet
+import React from 'react';
+import {View,VStack,HStack,Heading,Center,Text} from 'native-base';
 
-// Define the Customer Support screen component
-function CustomerSupport() {
+// Import necessary components and styles
+import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import the custom created new header component
+import ScreenNav from './client/components/Layouts/ScreenNav'; //import the custom created screennav component
+import CustomerSupportForm from './client/components/Forms/CustomerSupportForm'; //import the custom created customersupport form view component
+import FeedbackForm from './client/components/Forms/FeedbackForm'; //import the custom created feedback form component
+import FAQ from './client/components/Layouts/FAQ'; //import the cusotm created FAQ component
+import { Group11Layout } from '../../Screens/Layouts/Group11Layout';
+
+import styles from './CustomerSupport.css'; //import the external stylesheet
+import { CLabel } from '../../components/common/Label';
+
+//Actions
   // Define state to store FAQ dialog visibility
   const [faqDialogVisible, setFAQDialogVisible] = useState(false);
   const [selectedFAQ, setSelectedFAQ] = useState(null);
@@ -19,18 +23,7 @@ function CustomerSupport() {
     setFAQDialogVisible(true);
   };
 
-  return (
-    <div className="CustomerSupport">
-      <Header />
-      <ScreenNav />
-      <h2 className="CustomerSupport-heading">Customer Support</h2>
-      <CustomerSupportForm />
-      <h2 className="CustomerSupport-subheading">Feedback Form</h2>
-      <FeedbackForm />
-      <button className="CustomerSupport-submit-button">Submit</button>
-      <h2 className="CustomerSupport-subheading">FAQs</h2>
-      <div className="CustomerSupport-faq-list">
-        {FAQs.map((faq) => (
+  /* {FAQs.map((faq) => (
           <div key={faq.id} className="CustomerSupport-faq-item">
             <button className="CustomerSupport-faq-button" onClick={() => handleFAQClick(faq)}>
               {faq.question}
@@ -39,9 +32,9 @@ function CustomerSupport() {
               <i className="fa fa-info-circle" />
             </button>
           </div>
-        ))}
-      </div>
-      {faqDialogVisible && (
+        ))} */
+
+  /* {faqDialogVisible && (
         <div className="CustomerSupport-faq-dialog">
           <button className="CustomerSupport-faq-dialog-close" onClick={() => setFAQDialogVisible(false)}>
             <i className="fa fa-times-circle" />
@@ -49,8 +42,19 @@ function CustomerSupport() {
           <h3 className="CustomerSupport-faq-dialog-question">{selectedFAQ.question}</h3>
           <p className="CustomerSupport-faq-dialog-answer">{selectedFAQ.answer}</p>
         </div>
-      )}
-      <Footer />
-    </div>
+      )} */
+
+// Define the Customer Support screen component
+export default function CustomerSupport() {
+  return (
+    <Group11Layout headercomponent2={<SecondHeaderLayout />}
+                    screennavcomponent={<ScreenNav />}
+                    headinglabel1={<CLabel />}
+                    customersupportformviewcomponent={<CustomerSupportForm />}
+                    headinglabel2={<CLabel />}
+                    feedbackformsection={<FeedbackForm />}
+                    headinglabel3={<CLabel />}
+                    FAQssection={<FAQ />}
+    />
   );
 }

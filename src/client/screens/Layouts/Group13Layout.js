@@ -1,6 +1,6 @@
 import { Container, VStack, HStack, Box, Text, Center } from 'native-base';
 
-export const Group13Layout = ({headercomponent,backbutton,headinglabel,sectionlabel,shippingformsection,shippingformviewsection,billingaddressformsection,billingaddressformviewsection,paymentmethodformsection,paymentmethodformviewsection,orderconfirmationcalculationsection}) => {
+export const Group13Layout = ({headercomponent,backbutton,headinglabel,sectionlabel1,sectionlabel2,sectionlabel3,sectionlabel4,shippingformsection,shippingformviewsection,billingaddressformsection,billingaddressformviewsection,paymentmethodformsection,paymentmethodformviewsection,orderconfirmationcalculationsection}) => {
 
 const isOrderConfirmation = !!orderconfirmationcalculationsection; // determine if the layout is for Order Confirmation screen
 
@@ -20,26 +20,26 @@ const isOrderConfirmation = !!orderconfirmationcalculationsection; // determine 
           <Box width={isOrderConfirmation ? '20%' : 'auto'} />
         </HStack>
         <Box>
-          <Text>{sectionlabel}</Text> //Shipping Information
+          <Text>{sectionlabel1}</Text> //Shipping Information
         </Box>
         <Box>
           {isOrderConfirmation ? shippingformviewsection : shippingformsection}
         </Box>
         <Box>
-          <Text>{sectionlabel}</Text> //Billing Information
+          <Text>{sectionlabel2}</Text> //Billing Information
         </Box>
         <Box>
           {isOrderConfirmation ? billingaddressformviewsection : billingaddressformsection}
         </Box>
         <Box>
-          <Text>{sectionlabel}</Text> //Payment Method
+          <Text>{sectionlabel3}</Text> //Payment Method
         </Box>
         <Box>
           {isOrderConfirmation ? paymentmethodformviewsection : paymentmethodformsection}
         </Box>
         {isOrderConfirmation &&
           <Box>
-            <Text>{sectionlabel}</Text> //Order Summary
+            <Text>{sectionlabel4}</Text> //Order Summary
           </Box>
         }
         {isOrderConfirmation &&

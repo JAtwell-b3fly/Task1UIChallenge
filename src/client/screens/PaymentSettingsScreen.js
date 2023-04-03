@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import Header from './Header'; //import the custom created header component
-import Footer from './Footer'; //import the custom created footer component
-import ScreenNav from './ScreenNav'; //import the custom created screennav buttons component
-import PaymentSettingsFormView from './PaymentSettingsFormView'; //import the custom created paymentsettings form-view component
-import PaymentSettingsForm from './PaymentSettingsForm'; //import the custom created paymentsettings form component
+import {View,VStack,HStack,Container,Text,Center,Heading} from 'native-base';
+
+import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import the custom created header component
+import ScreenNav from './client/components/Layouts/ScreenNav'; //import the custom created screennav buttons component
+import PaymentSettingsFormView from './client/components/Forms/PaymentSettingsFormView'; //import the custom created paymentsettings form-view component
+import PaymentSettingsForm from './client/components/Forms/PaymentSettingsForm'; //import the custom created paymentsettings form component
+import { CLabel } from '../../components/common/Label';
+import { Group5Layout } from '../../Screens/Layouts/Group5Layout';
+
 import axios from 'axios';
 import styles from './styles'; //import the custom stylesheet
 
-const PaymentSettingsScreen = () => {
-  const [editing, setEditing] = useState(false);
+//Actions
+const [editing, setEditing] = useState(false);
   const [paymentMethods, setPaymentMethods] = useState([]);
   
   const handleCheckboxChange = (event) => {
@@ -40,12 +44,8 @@ const PaymentSettingsScreen = () => {
     }
     setEditing(false);
   };
-  
-  return (
-    <>
-      <Header title="Payment Settings" />
-      <ScreenNav />
-      <h2 style={{ textAlign: 'center' }}>Payment Settings</h2>
+
+  /* <h2 style={{ textAlign: 'center' }}>Payment Settings</h2>
       {editing ? (
         <PaymentSettingsForm
           paymentMethods={paymentMethods}
@@ -61,9 +61,14 @@ const PaymentSettingsScreen = () => {
         />
       )}
       <button onClick={() => setEditing(true)}>Edit</button>
-      <button onClick={handleSave}>Save</button>
-    </>
+      <button onClick={handleSave}>Save</button> */
+
+export default function PaymentSettingsScreen () {
+  return (
+    <Group5Layout headercomponent2={<SecondHeaderLayout />}
+                  screennavcomponent={<ScreenNav />}
+                  headerlabel={<CLabel />}
+                  paymentsettingsform={<PaymentSettingsFormView /> || <PaymentSettingsForm />}
+    />
   );
 };
-
-export default PaymentSettingsScreen;

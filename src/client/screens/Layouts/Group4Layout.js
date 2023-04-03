@@ -1,6 +1,6 @@
 import { Container, VStack, HStack, Box } from 'react-bootstrap';
 
-export const Group4Layout = ({ headercomponent, backbutton, headinglabel, cartsection, calculationsection, continueshoppingbutton, checkoutbutton }) => {
+export const Group4Layout = ({ headercomponent, backbutton, headinglabel, cartsection, calculationsection, continueshoppingbutton, proceedbutton }) => {
 
 return (
   <Container fluid>
@@ -20,7 +20,7 @@ return (
       <Box>
         <HStack justifyContent="space-between">
           <Box>{continueshoppingbutton}</Box>//left algined
-          <Box>{checkoutbutton}</Box>//right aligned
+          <Box>{proceedbutton}</Box>//right aligned
         </HStack>
       </Box>
     </VStack>

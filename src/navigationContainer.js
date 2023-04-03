@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import TestScreen from './Screens/testScreen';
+import RegistrationScreen from './client/screens/RegistrationScreen';
 
 
 const Stack = createStackNavigator();
