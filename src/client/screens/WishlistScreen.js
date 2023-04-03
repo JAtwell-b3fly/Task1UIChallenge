@@ -1,24 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import Header from '../client/component/Layouts/Header'; //import custom created header component
-import CategoryFilter from '../client/component/Layouts/Filter'; //import the custom created filter component
-import WishlistCatalogBox from '../client/component/Layouts/CatalogBox'; //import custom created wishlish catalogbox component
-import HeadingLabel from '../client/component/Layouts/HeadingLabel'; //import the custom created Heading Label section component
+import { HeaderLayout } from '../../components/Layouts/Header'; //import custom created header component
+import { ProductList } from '../../components/Forms/ProductList'; //import custom created wishlish catalogbox component
+import { CLabel } from '../../components/common/Label'; //import the custom created Heading Label section component
 import { Group2Layout } from '../../Screens/Layouts/Group2LayoutTest';
 
 import styles from '../src/shared/WishlistScreenStyles.css'; //import the custom created stylesheet
 
-
-export default function WishlistScreen () {
-  return(
-    <Group2Layout headercomponent={<Header />}
-                  headinglabel={<HeadingLabel />}
-                  catalogboxsection={<CategoryFilter />}
-    />
-  );
-}
-
+//Actions
 const filterComponent = document.querySelector('#wishlist-filter');
 
 filterComponent.addEventListener('change', () => {
@@ -46,3 +36,14 @@ paginationControl.addEventListener('swipe', (event) => {
     WishlistCatalogBox.showPreviousPage();
   }
 });
+
+export default function WishlistScreen () {
+  return(
+    <Group2Layout headercomponent={<HeaderLayout />}
+                  headinglabel={<CLabel />}
+                  catalogboxsection={<ProductList />}
+    />
+  );
+}
+
+

@@ -1,64 +1,56 @@
-import { db } from '../services/firebase';
+import { GET_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT } from '../constants/actionTypes';
+import { getProductList, getProduct, addProduct, updateProduct, deleteProduct } from '../../services/productService';
 
-export const FETCH_PRODUCTS_REQUEST = 'FETCH_PRODUCTS_REQUEST';
-export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
-export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
-export const ADD_PRODUCT_REQUEST = 'ADD_PRODUCT_REQUEST';
-export const ADD_PRODUCT_SUCCESS = 'ADD_PRODUCT_SUCCESS';
-export const ADD_PRODUCT_FAILURE = 'ADD_PRODUCT_FAILURE';
-export const UPDATE_PRODUCT_REQUEST = 'UPDATE_PRODUCT_REQUEST';
-export const UPDATE_PRODUCT_SUCCESS = 'UPDATE_PRODUCT_SUCCESS';
-export const UPDATE_PRODUCT_FAILURE = 'UPDATE_PRODUCT_FAILURE';
-export const DELETE_PRODUCT_REQUEST = 'DELETE_PRODUCT_REQUEST';
-export const DELETE_PRODUCT_SUCCESS = 'DELETE_PRODUCT_SUCCESS';
-export const DELETE_PRODUCT_FAILURE = 'DELETE_PRODUCT_FAILURE';
-export const SELECT_PRODUCT = 'SELECT_PRODUCT';
-
-export const fetchProducts = () => async (dispatch) => {
-    dispatch({ type: FETCH_PRODUCTS_REQUEST });
+// Get all products
+export const getProducts = () => async (dispatch) => {
     try {
-        const products = [];
-        const querySnapshot = await db.collection('products').get();
-        querySnapshot.forEach((doc) => {
-            products.push({ id: doc.id, ...doc.data() });
-        });
-        dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: products });
+        const response = await getProductList();
+        const products = response.data;
+        dispatch({ type: GET_PRODUCTS, payload: products });
     } catch (error) {
-        dispatch({ type: FETCH_PRODUCTS_FAILURE, payload: error.message });
+        console.log(error);
     }
 };
 
-export const addProduct = (product) => async (dispatch) => {
-    dispatch({ type: ADD_PRODUCT_REQUEST });
+// Get a single product by id
+export const getProductById = (id) => async (dispatch) => {
     try {
-        const docRef = await db.collection('products').add(product);
-        dispatch({ type: ADD_PRODUCT_SUCCESS, payload: { id: docRef.id, ...product } });
+        const response = await getProduct(id);
+        const product = response.data;
+        dispatch({ type: GET_PRODUCT, payload: product });
     } catch (error) {
-        dispatch({ type: ADD_PRODUCT_FAILURE, payload: error.message });
+        console.log(error);
     }
 };
 
-export const updateProduct = (id, updates) => async (dispatch) => {
-    dispatch({ type: UPDATE_PRODUCT_REQUEST });
+// Add a new product
+export const addNewProduct = (productData) => async (dispatch) => {
     try {
-        await db.collection('products').doc(id).update(updates);
-        dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: { id, updates } });
+        const response = await addProduct(productData);
+        const newProduct = response.data;
+        dispatch({ type: ADD_PRODUCT, payload: newProduct });
     } catch (error) {
-        dispatch({ type: UPDATE_PRODUCT_FAILURE, payload: error.message });
+        console.log(error);
     }
 };
 
-export const deleteProduct = (id) => async (dispatch) => {
-    dispatch({ type: DELETE_PRODUCT_REQUEST });
+// Update an existing product by id
+export const updateExistingProduct = (id, updatedProductData) => async (dispatch) => {
     try {
-        await db.collection('products').doc(id).delete();
-        dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id });
+        const response = await updateProduct(id, updatedProductData);
+        const updatedProduct = response.data;
+        dispatch({ type: UPDATE_PRODUCT, payload: updatedProduct });
     } catch (error) {
-        dispatch({ type: DELETE_PRODUCT_FAILURE, payload: error.message });
+        console.log(error);
     }
 };
 
-export const selectProduct = (product) => ({
-    type: SELECT_PRODUCT,
-    payload: product,
-});
+// Delete a product by id
+export const deleteProductById = (id) => async (dispatch) => {
+    try {
+        await deleteProduct(id);
+        dispatch({ type: DELETE_PRODUCT, payload: id });
+    } catch (error) {
+        console.log(error);
+    }
+};

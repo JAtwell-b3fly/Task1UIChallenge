@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import styles from './splashScreenStyles'; //import custom created stylesheet
 
 // Importing the logo image
-import logo from '../assets/logo.png';
+import logo from '../assets/logo';
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import Header from './Header'; //import the custom created header component
-import ScreenNav from './ScreenNav'; //import the custom created screennav buttons component
+
+import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import the custom created header component
+import ScreenNav from './client/components/Layout/ScreenNav'; //import the custom created screennav buttons component
 import OrderHistoryFilterForm from './OrderHistoryFilterForm'; //import the custom created Orderhistoryfilter form component
 import OrderHistoryTable from './OrderHistoryTable'; //import the custom created orderhistorytable component
+
 import styles from '.styles'; //import styles from stylesheet
 
 function OrderHistoryScreen() {

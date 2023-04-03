@@ -1,68 +1,65 @@
-import { auth } from '../../services/firebase';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR } from '../constants/actionTypes';
+import authService from '../../../shared/services/authService';
 
-// Action types
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
-export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
-export const LOGOUT_USER_FAILURE = 'LOGOUT_USER_FAILURE';
-export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
-export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
-
-// Action creators
-export const loginUserSuccess = (user) => ({
-    type: LOGIN_USER_SUCCESS,
-    payload: user,
-});
-
-export const loginUserFailure = (error) => ({
-    type: LOGIN_USER_FAILURE,
-    payload: error,
-});
-
-export const logoutUserSuccess = () => ({
-    type: LOGOUT_USER_SUCCESS,
-});
-
-export const logoutUserFailure = (error) => ({
-    type: LOGOUT_USER_FAILURE,
-    payload: error,
-});
-
-export const registerUserSuccess = (user) => ({
-    type: REGISTER_USER_SUCCESS,
-    payload: user,
-});
-
-export const registerUserFailure = (error) => ({
-    type: REGISTER_USER_FAILURE,
-    payload: error,
-});
-
-export const loginUser = (email, password) => async (dispatch) => {
+// Load user
+export const loadUser = () => async dispatch => {
     try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-        dispatch(loginUserSuccess(user));
-    } catch (error) {
-        dispatch(loginUserFailure(error.message));
+        const res = await authService.getCurrentUser();
+        dispatch({
+            type: USER_LOADED,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR
+        });
     }
 };
 
-export const logoutUser = () => async (dispatch) => {
+// Register user
+export const register = ({ name, surname, email, password }) => async dispatch => {
+    const newUser = { name, surname, email, password };
     try {
-        await auth.signOut();
-        dispatch(logoutUserSuccess());
-    } catch (error) {
-        dispatch(logoutUserFailure(error.message));
+        const res = await authService.registerUser(newUser);
+        dispatch({
+            type: REGISTER_SUCCESS,
+            payload: res.data
+        });
+        dispatch(loadUser());
+    } catch (err) {
+        dispatch({
+            type: REGISTER_FAIL,
+            payload: err.response.data.msg
+        });
     }
 };
 
-export const registerUser = (email, password) => async (dispatch) => {
+// Login user
+export const login = ({ email, password }) => async dispatch => {
+    const user = { email, password };
     try {
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-        dispatch(registerUserSuccess(user));
-    } catch (error) {
-        dispatch(registerUserFailure(error.message));
+        const res = await authService.loginUser(user);
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+        });
+        dispatch(loadUser());
+    } catch (err) {
+        dispatch({
+            type: LOGIN_FAIL,
+            payload: err.response.data.msg
+        });
+    }
+};
+
+// Logout user
+export const logout = () => async dispatch => {
+    try {
+        await authService.logoutUser();
+        dispatch({
+            type: LOGOUT_SUCCESS
+        });
+    } catch (err) {
+        console.error(err);
     }
 };

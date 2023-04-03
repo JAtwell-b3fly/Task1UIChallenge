@@ -1,15 +1,32 @@
-import { db } from '../database/firebase';
+import axios from 'axios';
 
-const getCartItems = (userId) => {
-    return db.collection('carts').doc(userId).collection('items').get();
+const API_URL = 'http://localhost:5000/api';
+
+const addToCart = (productId, quantity) => {
+    return axios.post(API_URL + '/cart/add', {
+        productId,
+        quantity
+    });
 };
 
-const addToCart = (userId, productId, quantity) => {
-    return db.collection('carts').doc(userId).collection('items').doc(productId).set({ quantity });
+const removeFromCart = (productId) => {
+    return axios.delete(API_URL + '/cart/remove/' + productId);
 };
 
-const removeFromCart = (userId, productId) => {
-    return db.collection('carts').doc(userId).collection('items').doc(productId).delete();
+const updateCartQuantity = (productId, quantity) => {
+    return axios.put(API_URL + '/cart/update', {
+        productId,
+        quantity
+    });
 };
 
-export { getCartItems, addToCart, removeFromCart };
+const clearCart = () => {
+    return axios.delete(API_URL + '/cart/clear');
+};
+
+export default {
+    addToCart,
+    removeFromCart,
+    updateCartQuantity,
+    clearCart
+};

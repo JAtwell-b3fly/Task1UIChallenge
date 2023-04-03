@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import Header from './Header'; //import the custom created header component
-import Footer from "./Footer"; //import the custom created footer component
-import ScreenNav from './ScreenNav'; //import the custom created screennav buttons component
-import AccountForm from './AccountForm'; //import the custom created accountform component
+import {View,VStack,HStack,Center,Text} from 'native-base';
+
+import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import the custom created header component
+import ScreenNav from './client/component/Layouts/ScreenNav'; //import the custom created screennav buttons component
+import AccountForm from './client/component/Form/AccountForm'; //import the custom created accountform component
+import AccountFormView from './client/component/Form/AccountFormView';
+import { CLabel } from '../../components/common/Label';
+import { Group5Layout } from '../../Screens/Layouts/Group5Layout';
 
 const AccountInformation = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -19,25 +23,27 @@ const AccountInformation = () => {
     // if successful, update the accountData state and setIsEditing(false)
   };
 
-  return (
-    <div>
-      <Header title="Account Information" height="35%" />
-      <ScreenNav />
-      <h2 style={{ textAlign: 'center' }}>Account Information</h2>
+  /* <h2 style={{ textAlign: 'center' }}>Account Information</h2>
       {isEditing ? (
         <AccountForm
           accountData={accountData}
           onSubmit={handleSaveClick}
-        />
-      ) : (
+        /> 
+        ) : (
         <div>
-          {/* display the form view of the account information */}
+          //display the form view of the account information 
           <input type="checkbox" onChange={handleEditClick} />
           <label htmlFor="editDetails">Edit Details</label>
         </div>
       )}
-    </div>
+        */
+
+  return (
+    <Group5Layout headercomponent2={<SecondHeaderLayout />}
+                  screennavcomponent={<ScreenNav />}
+                  headerlabel={<CLabel />}
+                  accountsettingsform={<AccountForm /> || <AccountFormView />}
+    />
   );
 };
 
-export default AccountInformation;

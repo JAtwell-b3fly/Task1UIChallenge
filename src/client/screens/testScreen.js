@@ -1,6 +1,6 @@
 import { View, Box, Button, VStack } from "native-base";
 import HeaderComponent from "../components/MainHeader";
-import MInput from "../components/common/Input";
+import CInput from "../components/common/Input";
 import MButton from "../components/common/Button";
 import { FontAwesome5 } from '@expo/vector-icons';
 

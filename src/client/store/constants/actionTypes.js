@@ -1,0 +1,31 @@
+// Authentication actions
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const USER_LOADED = 'USER_LOADED';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const AUTH_ERROR = 'AUTH_ERROR';
+
+// Cart actions
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const UPDATE_CART_QUANTITY = 'UPDATE_CART_QUANTITY';
+export const CLEAR_CART = 'CLEAR_CART';
+
+// Product actions
+
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const GET_PRODUCT = 'GET_PRODUCT';
+export const ADD_PRODUCT = 'FADD_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+
+
+// Order actions
+export const PLACE_ORDER_REQUEST = 'PLACE_ORDER_REQUEST';
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS';
+export const PLACE_ORDER_FAILURE = 'PLACE_ORDER_FAILURE';
+export const FETCH_ORDERS_REQUEST = 'FETCH_ORDERS_REQUEST';
+export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS';
+export const FETCH_ORDERS_FAILURE = 'FETCH_ORDERS_FAILURE';

@@ -1,31 +1,43 @@
-import api from '../../services/api';
+import axios from 'axios';
+import {
+    PLACE_ORDER_REQUEST,
+    PLACE_ORDER_SUCCESS,
+    PLACE_ORDER_FAILURE,
+    FETCH_ORDERS_REQUEST,
+    FETCH_ORDERS_SUCCESS,
+    FETCH_ORDERS_FAILURE
+} from '../constants/actionTypes';
 
-// Action Types
-export const CREATE_ORDER_REQUEST = 'CREATE_ORDER_REQUEST';
-export const CREATE_ORDER_SUCCESS = 'CREATE_ORDER_SUCCESS';
-export const CREATE_ORDER_FAILURE = 'CREATE_ORDER_FAILURE';
-
-export const FETCH_ORDERS_REQUEST = 'FETCH_ORDERS_REQUEST';
-export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS';
-export const FETCH_ORDERS_FAILURE = 'FETCH_ORDERS_FAILURE';
-
-// Action Creators
-export const createOrder = (orderData) => async (dispatch) => {
-    dispatch({ type: CREATE_ORDER_REQUEST });
+// action creator to place an order
+export const placeOrder = (orderData) => async (dispatch) => {
     try {
-        const response = await api.post('/orders', orderData);
-        dispatch({ type: CREATE_ORDER_SUCCESS, payload: response.data });
+        dispatch({ type: PLACE_ORDER_REQUEST });
+        const { data } = await axios.post('/api/orders', orderData);
+        dispatch({ type: PLACE_ORDER_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: CREATE_ORDER_FAILURE, payload: error.message });
+        dispatch({
+            type: PLACE_ORDER_FAILURE,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        });
     }
 };
 
+// action creator to fetch all orders
 export const fetchOrders = () => async (dispatch) => {
-    dispatch({ type: FETCH_ORDERS_REQUEST });
     try {
-        const response = await api.get('/orders');
-        dispatch({ type: FETCH_ORDERS_SUCCESS, payload: response.data });
+        dispatch({ type: FETCH_ORDERS_REQUEST });
+        const { data } = await axios.get('/api/orders');
+        dispatch({ type: FETCH_ORDERS_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: FETCH_ORDERS_FAILURE, payload: error.message });
+        dispatch({
+            type: FETCH_ORDERS_FAILURE,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        });
     }
 };
+
+

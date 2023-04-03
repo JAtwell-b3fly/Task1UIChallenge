@@ -1,63 +1,38 @@
-import {
-    LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAILURE,
-    LOGOUT_USER_SUCCESS,
-    LOGOUT_USER_FAILURE,
-    REGISTER_USER_SUCCESS,
-    REGISTER_USER_FAILURE,
-} from '../actions/authActions';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL } from '../constants/actionTypes';
 
 const initialState = {
     isAuthenticated: false,
     user: null,
-    error: null,
+    error: null
 };
 
-const authReducer = (state = initialState, action) => {
+export default function authReducer(state = initialState, action) {
     switch (action.type) {
-        case LOGIN_USER_SUCCESS:
+        case LOGIN_SUCCESS:
+        case REGISTER_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true,
                 user: action.payload,
-                error: null,
+                error: null
             };
-        case LOGIN_USER_FAILURE:
+        case LOGIN_FAIL:
+        case REGISTER_FAIL:
             return {
                 ...state,
                 isAuthenticated: false,
                 user: null,
-                error: action.payload,
+                error: action.payload
             };
-        case LOGOUT_USER_SUCCESS:
+        case LOGOUT_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: false,
                 user: null,
-                error: null,
-            };
-        case LOGOUT_USER_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-            };
-        case REGISTER_USER_SUCCESS:
-            return {
-                ...state,
-                isAuthenticated: true,
-                user: action.payload,
-                error: null,
-            };
-        case REGISTER_USER_FAILURE:
-            return {
-                ...state,
-                isAuthenticated: false,
-                user: null,
-                error: action.payload,
+                error: null
             };
         default:
             return state;
     }
-};
+}
 
-export default authReducer;

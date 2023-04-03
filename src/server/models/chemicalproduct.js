@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     safetyPrecautions: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
     rating: DataTypes.FLOAT,
-    numOfReviews: DataTypes.INTEGER
+    numOfReviews: DataTypes.INTEGER,
+    price: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'ChemicalProduct',
