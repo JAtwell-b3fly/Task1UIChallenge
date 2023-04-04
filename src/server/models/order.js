@@ -14,11 +14,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Order.init({
+    id: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
-    orderDate: DataTypes.DATE,
-    productIds: DataTypes.STRING,
-    quantities: DataTypes.STRING,
-    totalPrice: DataTypes.FLOAT
+    orderAmount: DataTypes.FLOAT,
+    orderShipName: DataTypes.STRING,
+    orderShipAddress: DataTypes.STRING,
+    orderShipAddress2: DataTypes.STRING,
+    orderCity: DataTypes.STRING,
+    orderProvinceState: DataTypes.STRING,
+    orderZip: DataTypes.STRING,
+    orderCountry: DataTypes.STRING,
+    orderTax: DataTypes.FLOAT,
+    orderEmail: DataTypes.STRING,
+    orderShipping: DataTypes.DATE,
+    orderShipped: DataTypes.BOOLEAN,
+    orderTrackingNumber: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Order',
