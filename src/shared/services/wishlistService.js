@@ -1,15 +1,32 @@
-import { db } from '../../server/database/firebase';
+import api from "../shared/api";
 
-const getWishlistItems = (userId) => {
-    return db.collection('wishlists').doc(userId).collection('items').get();
+const wishlistService = {
+    async getWishlist() {
+        try {
+            const response = await api.get("/wishlist");
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    async addToWishlist(productId) {
+        try {
+            const response = await api.post("/wishlist", { productId });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    async removeFromWishlist(productId) {
+        try {
+            const response = await api.delete(`/wishlist/${productId}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
 
-const addToWishlist = (userId, productId) => {
-    return db.collection('wishlists').doc(userId).collection('items').doc(productId).set({});
-};
-
-const removeFromWishlist = (userId, productId) => {
-    return db.collection('wishlists').doc(userId).collection('items').doc(productId).delete();
-};
-
-export { getWishlistItems, addToWishlist, removeFromWishlist };
+export default wishlistService;

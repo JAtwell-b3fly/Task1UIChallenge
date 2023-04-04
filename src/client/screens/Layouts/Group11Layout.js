@@ -1,6 +1,6 @@
 import { Container, VStack, HStack, Box, Heading, Text,Center } from 'native-base';
 
-export const Group11Layout = ({ headercomponent2, screennavcomponent, headinglabel, customersupportformviewcomponent, feedbackformsection, FAQssection }) => {
+export const Group11Layout = ({ headercomponent2, screennavcomponent, headinglabel1,headinglabel2,headinglabel3, customersupportformviewcomponent, feedbackformsection, FAQssection }) => {
   return (
     <Container>
       <VStack space={4} alignItems="center">
@@ -12,7 +12,7 @@ export const Group11Layout = ({ headercomponent2, screennavcomponent, headinglab
         </Box>
         <Box>
           <Center>
-            <Heading>{headinglabel}</Heading> // Heading Label: Customer Support 
+            <Heading>{headinglabel1}</Heading> // Heading Label: Customer Support 
           </Center>
         </Box>
         <Box>
@@ -20,7 +20,7 @@ export const Group11Layout = ({ headercomponent2, screennavcomponent, headinglab
         </Box>
         <Box>
           <Center>
-            <Heading>{headinglabel}</Heading> // Heading Label: Feedback Form 
+            <Heading>{headinglabel2}</Heading> // Heading Label: Feedback Form 
           </Center>
         </Box>
         <Box>
@@ -28,7 +28,7 @@ export const Group11Layout = ({ headercomponent2, screennavcomponent, headinglab
         </Box>
         <Box>
           <Center>
-            <Heading>{headinglabel}</Heading> // Heading Label: FAQs 
+            <Heading>{headinglabel3}</Heading> // Heading Label: FAQs 
           </Center>
         </Box>
         <Box>

@@ -1,81 +1,56 @@
-import axios from 'axios';
-import {
-    FETCH_PRODUCTS_REQUEST,
-    FETCH_PRODUCTS_SUCCESS,
-    FETCH_PRODUCTS_FAILURE,
-    ADD_PRODUCT_REQUEST,
-    ADD_PRODUCT_SUCCESS,
-    ADD_PRODUCT_FAILURE,
-} from '../constants/actionTypes';
+import { GET_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT } from '../constants/actionTypes';
+import { getProductList, getProduct, addProduct, updateProduct, deleteProduct } from '../../services/productService';
 
-// Fetch all products action
-export const fetchProducts = () => {
-    return (dispatch) => {
-        dispatch(fetchProductsRequest());
-        axios
-            .get('/api/products')
-            .then((response) => {
-                const products = response.data;
-                dispatch(fetchProductsSuccess(products));
-            })
-            .catch((error) => {
-                dispatch(fetchProductsFailure(error.message));
-            });
-    };
+// Get all products
+export const getProducts = () => async (dispatch) => {
+    try {
+        const response = await getProductList();
+        const products = response.data;
+        dispatch({ type: GET_PRODUCTS, payload: products });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-export const fetchProductsRequest = () => {
-    return {
-        type: FETCH_PRODUCTS_REQUEST,
-    };
+// Get a single product by id
+export const getProductById = (id) => async (dispatch) => {
+    try {
+        const response = await getProduct(id);
+        const product = response.data;
+        dispatch({ type: GET_PRODUCT, payload: product });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-export const fetchProductsSuccess = (products) => {
-    return {
-        type: FETCH_PRODUCTS_SUCCESS,
-        payload: products,
-    };
+// Add a new product
+export const addNewProduct = (productData) => async (dispatch) => {
+    try {
+        const response = await addProduct(productData);
+        const newProduct = response.data;
+        dispatch({ type: ADD_PRODUCT, payload: newProduct });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-export const fetchProductsFailure = (error) => {
-    return {
-        type: FETCH_PRODUCTS_FAILURE,
-        payload: error,
-    };
+// Update an existing product by id
+export const updateExistingProduct = (id, updatedProductData) => async (dispatch) => {
+    try {
+        const response = await updateProduct(id, updatedProductData);
+        const updatedProduct = response.data;
+        dispatch({ type: UPDATE_PRODUCT, payload: updatedProduct });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-// Add new product action
-export const addProduct = (product) => {
-    return (dispatch) => {
-        dispatch(addProductRequest());
-        axios
-            .post('/api/products', product)
-            .then((response) => {
-                const addedProduct = response.data;
-                dispatch(addProductSuccess(addedProduct));
-            })
-            .catch((error) => {
-                dispatch(addProductFailure(error.message));
-            });
-    };
-};
-
-export const addProductRequest = () => {
-    return {
-        type: ADD_PRODUCT_REQUEST,
-    };
-};
-
-export const addProductSuccess = (product) => {
-    return {
-        type: ADD_PRODUCT_SUCCESS,
-        payload: product,
-    };
-};
-
-export const addProductFailure = (error) => {
-    return {
-        type: ADD_PRODUCT_FAILURE,
-        payload: error,
-    };
+// Delete a product by id
+export const deleteProductById = (id) => async (dispatch) => {
+    try {
+        await deleteProduct(id);
+        dispatch({ type: DELETE_PRODUCT, payload: id });
+    } catch (error) {
+        console.log(error);
+    }
 };

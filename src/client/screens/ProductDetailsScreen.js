@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Header from './client/components/Layouts/Header'; //import the custom created header component
+
+import { HeaderLayout } from '../../components/Layouts/Header';//import the custom created header component
 import ProductGallery from './client/components/Layouts/ProductGallery'; //import the productsimagegallery component
 import ProductName from './client/components/Layouts/ProductName'; //import the name of the product pulled from the database based on the product selected
 import ProductDescription from './client/components/Layouts/ProductDescription'; //import the description of the product description pulled from the database based on the product selected
 import ProductPrice from './client/components/Layouts/ProductPrice'; //import the price of the product from the database based on the product selected
-import AddToCartButton from './client/components/Layouts/AddToCartButton'; //import the add to cart button that adds the product to the shopping cart
-import AddToWishlistButton from './client/components/Layouts/AddToWishlistButton'; //import the add to wishlist button that adds the product to the wishlist
+import CartButton from './client/components/common/iconButton';//import the add to cart button that adds the product to the shopping cart
+import WishlistButton from './client/components/common/iconButton'; //import the add to wishlist button that adds the product to the wishlist
+import BackButton from './client/components/common/iconButton';
 import AvgReviewRating from './client/components/Layouts/AvgReviewRating'; //import the component to pull the average rating of the product and the mode of the reviews within range of the average rating
-import HeaderLabel from './client/components/HeaderLabel';
-import CatalogBoxsection from './client/components/CatalogBoxsection';
+import { CLabel } from '../../components/common/Label';
+import { ProductList } from '../../components/Forms/ProductList';
 import SafetyInformation from './client/component/SafetyInformation';
 import Rating&ReviewFormSection from './client/components/Rating&ReviewFormSection';
 import { Group3Layout } from '../../Screens/Layouts/Group3Layout';
@@ -53,19 +55,19 @@ const handleRatingSubmit = (ratingData) => {
 
 export default function ProductDescriptionScreen (props) {
   return (
-    <Group3Layout headerComponent={<HeaderComponent />}
+    <Group3Layout headerComponent={<HeaderLayout />}
                   productGallery={<ProductGallery />}
                   backButton={<BackButton />}
-                  addToCart={<AddToCartButton />}
-                  addToWishlist={<AddToWishlistButton />}
+                  addToCart={<CartButton />}
+                  addToWishlist={<WishlistButton />}
                   productName={<ProductName />}
                   productPrice={<ProductPrice />}
                   modeReviewAndAvgRating={AvgReviewRating />}
                   productDescription={ProductDescription />}
                   safetyInformationSection={SafetyInformation />}
                   ratingsAndReviewFormSection={<Rating&ReviewFormSection />}
-                  headinglabel={<HeadingLabel />}
-                  catalogboxsection={<CatalogBoxsection />}
+                  headinglabel={<CLabel/>}
+                  catalogboxsection={<ProductList />}
     />
   );
 };
