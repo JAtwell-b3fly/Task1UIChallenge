@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-    // helper methods
+    // Finder methods
   static findAllUsers() {
    // findAllUsers(): This method returns all the users in the database. It uses the findAll() 
   //  method provided by Sequelize to retrieve all the rows in the users table.
