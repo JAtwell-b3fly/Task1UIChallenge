@@ -12,6 +12,51 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    static async findAllBillingInformation() {
+      try {
+        const billingInformation = await BillingInformation.findAll();
+        return billingInformation;
+      } catch (error) {
+        throw new Error('Failed to fetch BillingInformation');
+      }
+    }
+    
+    static async findBillingInformationByUserId(userId) {
+      try {
+        const billingInformation = await BillingInformation.findOne({ where: { user_id: userId } });
+        return billingInformation;
+      } catch (error) {
+        throw new Error('Failed to fetch BillingInformation');
+      }
+    }
+    
+    static async createBillingInformation(data) {
+      try {
+        const billingInformation = await BillingInformation.create(data);
+        return billingInformation;
+      } catch (error) {
+        throw new Error('Failed to create BillingInformation');
+      }
+    }
+    
+    static async updateBillingInformationByUserId(userId, data) {
+      try {
+        const billingInformation = await BillingInformation.update(data, { where: { user_id: userId } });
+        return billingInformation;
+      } catch (error) {
+        throw new Error('Failed to update BillingInformation');
+      }
+    }
+    
+    static async deleteBillingInformationByUserId(userId) {
+      try {
+        const billingInformation = await BillingInformation.destroy({ where: { user_id: userId } });
+        return billingInformation;
+      } catch (error) {
+        throw new Error('Failed to delete BillingInformation');
+      }
+    }
+    
   }
   BillingInformation.init({
     user_id: DataTypes.INTEGER,
