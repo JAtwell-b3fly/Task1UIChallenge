@@ -2,15 +2,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('CartItems', {
+    await queryInterface.createTable('SafetyInformations', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-       
-      
       Products_id: {
         type: Sequelize.INTEGER,
           allowNull: false,
@@ -19,12 +17,11 @@ module.exports = {
             key: 'id'
           },
         },
-      
-      Quantity: {
-        type: Sequelize.INTEGER
-      },
-      Status: {
+      safety_title: {
         type: Sequelize.STRING
+      },
+      safety_description: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('CartItems');
+    await queryInterface.dropTable('SafetyInformations');
   }
 };
