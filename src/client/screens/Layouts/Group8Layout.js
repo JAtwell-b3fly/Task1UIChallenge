@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, VStack, HStack, Center, Heading, Text, Box} from 'native-base';
 
-const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1, setting2, headinglabel2, setting3, setting4, headinglabel3, headinglabel4, headinglabel5, headinglabel6, setting5, setting6, setting7, setting8, setting9, setting1button, setting2button, setting3button, setting4button, setting5button, setting6button, setting7button, setting8button, setting9button }) => {
+const Group8Layout = ({ applogoheader, avatarcomponent, setting1button, setting2button, setting3button, setting4button, setting5button, setting6button, setting7button, setting8button, setting9button,setting10button, setting11button, setting12button, setting13button, setting14button }) => {
   return (
     <Container>
       <VStack>
@@ -19,7 +19,7 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
     //Account
         <Box>
             <Heading>
-                {headinglabel1} //Account
+                 Account
             </Heading>
         </Box>
 
@@ -28,19 +28,35 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
             <HStack space={2} alignItems="center">
                 <Box>
                     <Text>
-                        {setting1} //Edit Profile OR Account Settings
+                        Edit Profile OR Account Settings
                     </Text>
-                    {setting1button} //Nav button
+                    {setting1button} //Nav button to Account Settings Screen
                 </Box>
             </HStack>
 
-            //Privacy
+    //Privacy And Security
+        <Box>
+            <Heading>
+                Privacy And Security
+            </Heading>
+        </Box>
+            //Two Step Factor Authentication
             <HStack space={2} alignItems="center">
                 <Box>
                     <Text>
-                        {setting2} //Privacy
+                        Two Step Factor Authentication
                     </Text>
-                    {setting2button} //Nav button
+                    {setting2button} //Nav button to start Two Step Factor Authentication 
+                </Box>
+            </HStack>
+
+            //Security Questions
+            <HStack space={2} alignItems="center">
+                <Box>
+                    <Text>
+                        Security Questions
+                    </Text>
+                    {setting3button} //Nav button to Security Questions Screen
                 </Box>
             </HStack>
         </Box>
@@ -48,7 +64,7 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
     //Notifications
         <Box>
             <Heading>
-                {headinglabel2} //Notifications
+                Notifications
             </Heading>
         </Box>
 
@@ -57,9 +73,9 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
             <HStack space={2} alignItems="center">
                 <Box>
                     <Text>
-                        {setting3} //Notifications
+                        Notifications
                     </Text>
-                    {setting3button} //Toggle Button OR Radio Controls
+                    {setting4button} //Radio Buttons or Dropdown button //Email OR Push OR SMS
                 </Box>
             </HStack>
 
@@ -67,48 +83,37 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
             <HStack space={2} alignItems="center">
                 <Box>
                     <Text>
-                        {setting4} //App Notifications
+                        App Notifications
                     </Text>
-                    {setting4button} //Toggle Button OR Radio Controls
+                    {setting5button} //Radio Buttons or Dropdown button //Email OR Push OR SMS
                 </Box>
             </HStack>
         </Box>
 
-    //Help And Support
+    //Language And Localisation
         <Box>
             <Heading>
-                {headinglabel3} //Help And Support
+                Language And Localisation
             </Heading>
         </Box>
 
         <Box>
-            //Language
+            //Preferred Language
             <HStack space={2} alignItems="center">
                 <Box>
                     <Text>
-                        {setting5} //Language
+                        Preferred Language
                     </Text>
-                    {setting5button} //Dropdown Button or Toggle Button
+                    {setting6button} //Toggle button or Dropdown button for Preferred Language
                 </Box>
             </HStack>
 
-            //Country
             <HStack space={2} alignItems="center">
                 <Box>
                     <Text>
-                        {setting6} //Country
+                        Preferred Country
                     </Text>
-                    {setting6button} //Toggle Button or Radio Control or Dropdown Button
-                </Box>
-            </HStack>
-
-            //Contact Us
-            <HStack>
-                <Box>
-                    <Text>
-                        {setting7} //Contact Us
-                    </Text>
-                    {setting7button} //Nav Button or Copy Contact functionality
+                    {setting7button} //Toggle button or Dropdown button for Preferred Country
                 </Box>
             </HStack>
         </Box>
@@ -116,7 +121,7 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
     //Appearance
         <Box>
             <Heading>
-                {headinglabel4} //Appearance
+                Appearance
             </Heading>
         </Box>
 
@@ -125,7 +130,7 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
             <HStack>
                 <Box>
                     <Text>
-                        {setting8} //Theme
+                        Theme
                     </Text>
                     {setting8button} //Toggle Button(Dark Mode or Light Mode)
                 </Box>
@@ -135,9 +140,59 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
             <HStack>
                 <Box>
                     <Text>
-                        {setting9} //Font Size
+                        Font Size
                     </Text>
                     {setting9button} //Toggle Button or Dropdown Button
+                </Box>
+            </HStack>
+        </Box>
+
+    //Payment
+        <Box>
+            <Heading>
+                Payment
+            </Heading>
+        </Box>
+
+        <Box>
+
+            //Payment Method Settings
+            <HStack space={2} alignItems="center">
+                <Box>
+                    <Text>
+                        Payment Method Settings
+                    </Text>
+                    {setting10button} //Nav button to Payment Method Settings Screen
+                </Box>
+            </HStack>
+        </Box>
+
+    //Help And Support
+        <Box>
+            <Heading>
+                Help And Support
+            </Heading>
+        </Box>
+
+        <Box>
+
+            //FAQs
+            <HStack space={2} alignItems="center">
+                <Box>
+                    <Text>
+                        FAQs
+                    </Text>
+                    {setting11button} //Nav button to FAQs in Customer Support Screen
+                </Box>
+            </HStack>
+
+            //Contact Us
+            <HStack space={2} alignItems="center">
+                <Box>
+                    <Text>
+                        Contact Us
+                    </Text>
+                    {setting12button} //Nav Button to Contact Us Screen OR Copy Contact functionality
                 </Box>
             </HStack>
         </Box>
@@ -145,14 +200,14 @@ const Group8Layout = ({ applogoheader, avatarcomponent, headinglabel1, setting1,
     //About
         <Box>
             <Heading>
-                {headinglabel5} //About Nav Button
+                {setting13button} //About Nav Button to About Screen
             </Heading>
         </Box>
 
     //Logout
         <Box>
             <Heading>
-                {headinglabel6} //Logout Confirmation Popup
+                {setting14button} //Logout Confirmation Popup
             </Heading>
         </Box>
       </VStack>
