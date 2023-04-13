@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    
     // Finder methods
     static findAllSessions() {
       // findAllSessions(): returns all sessions.

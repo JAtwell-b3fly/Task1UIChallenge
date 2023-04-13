@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    // Finder Methods
     static async findAllBillingInformation() {
       try {
         const billingInformation = await BillingInformation.findAll();
@@ -59,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     
   }
   BillingInformation.init({
+     // Model attributes are defined here
     user_id: DataTypes.INTEGER,
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
@@ -67,8 +70,8 @@ module.exports = (sequelize, DataTypes) => {
     phone_number: DataTypes.STRING,
     address: DataTypes.STRING
   }, {
-    sequelize,
-    modelName: 'BillingInformation',
+    sequelize,// We need to pass the connection instance
+    modelName: 'BillingInformation',// We need to choose the model name
   });
   return BillingInformation;
 };

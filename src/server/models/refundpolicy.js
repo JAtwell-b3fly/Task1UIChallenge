@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    
    //finder Methods
     static findAllPolicies() {
       // findAllPolicies(): Finds all RefundPolicy instances in the

@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }
   ShippingInformation.init({
+       // Model attributes are defined here
     user_id: DataTypes.INTEGER,
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
@@ -64,8 +65,8 @@ module.exports = (sequelize, DataTypes) => {
     phone_number: DataTypes.STRING,
     address: DataTypes.STRING
   }, {
-    sequelize,
-    modelName: 'ShippingInformation',
+    sequelize,// We need to pass the connection instance
+    modelName: 'ShippingInformation',// We need to choose the model name
   });
   return ShippingInformation;
 };

@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    
     //Finder methods
     static async getAllProducts() {
       //findAllProducts: This is a static method that returns all products in the database. 

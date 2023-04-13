@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    
     // Finder Methods
     static async findAllSafetyInformation() {
       // findAllSafetyInformation(): This method retrieves all safety information

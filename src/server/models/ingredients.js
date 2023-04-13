@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    
     //Finder methods
     static findAllIngredients() {
       return Ingredients.findAll();
@@ -44,11 +45,12 @@ module.exports = (sequelize, DataTypes) => {
   
   
   Ingredients.init({
+     // Model attributes are defined here
     ingredient_name: DataTypes.STRING,
     ingredient_description: DataTypes.TEXT
   }, {
-    sequelize,
-    modelName: 'Ingredients',
+    sequelize,// We need to pass the connection instance
+    modelName: 'Ingredients',// We need to choose the model name
     timestamps: true,
     underscored: true
   });
