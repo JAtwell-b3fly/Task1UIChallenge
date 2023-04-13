@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Container, VStack, HStack, Input, Button, Text, Link, FormControl, Select, Avatar } from "native-base";
+import { useNavigation } from '@react-navigation/native';
 
 //import the external files
 import Avatar from './components/Avatar';
