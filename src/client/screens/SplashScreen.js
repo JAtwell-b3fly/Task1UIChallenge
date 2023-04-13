@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // Importing the stylesheet
 import styles from './splashScreenStyles'; //import custom created stylesheet
@@ -7,13 +8,16 @@ import styles from './splashScreenStyles'; //import custom created stylesheet
 // Importing the logo image
 import logo from '../assets/logo';
 
-const SplashScreen = ({ navigation }) => {
+const SplashScreen = () => {
+  const navigation = useNavigation();
+
   useEffect(() => {
-    // Navigate to the login screen after 5 seconds
-    setTimeout(() => {
-      navigation.replace('LoginScreen'); TODO: `Don't lead the user straight to login but rather into the app to immedlately purchase`
+    const timer = setTimeout(() => { 
+      navigation.navigate("LoginScreen");
     }, 5000);
-  }, []);
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
