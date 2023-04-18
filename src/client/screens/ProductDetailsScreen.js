@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
+import { View, Text, TextInput, TouchableOpacity} from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { getProductList} from "../services/productService";
+import { useHistory} from "react-router-dom";
 
 import { HeaderLayout } from '../../components/Layouts/Header';//import the custom created header component
 import ProductGallery from './client/components/Layouts/ProductGallery'; //import the productsimagegallery component
@@ -15,45 +19,142 @@ import SafetyInformation from './client/component/SafetyInformation';
 import Rating&ReviewFormSection from './client/components/Rating&ReviewFormSection';
 import { Group3Layout } from '../../Screens/Layouts/Group3Layout';
 
-//Actions
-const [product, setProduct] = useState({});
-const productId = props.match.params.id; // Get product ID from URL
+import {getProductById} from "../api/products";
 
-useEffect(() => {
-  // Fetch product data from backend API based on ID
-  // Update product state
-}, [productId]);
+const ProductDescriptionScreen = () => {
 
-const handleRatingSubmit = (ratingData) => {
-  // Send rating data to backend API
-  // Update product rating state
-};
+  //Use State for the Product Details Screen
+  const navigation = useNavigation();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [cartItems, setCartItems] = useState("");
+  const [wishlistItems, setWishlistItems] = useState("");
+  const [productDetails, setProductDetails] = useState("");
+  const [relatedProducts, setRelatedProducts] = useState("");
+  const [reviews, setReviews] = useState("");
 
-// Get the product ID from the URL
-//const urlParams = new URLSearchParams(window.location.search);
-//const productId = urlParams.get('productId');
+  const [productTitle, setProductTitle] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productLongDescription, setProductLongDescription] = useState("");
+  const [productRating, setProductRating] = useState("");
+  const [productReviews, setProductReviews] = useState([]);
 
-// Fetch the product data from the database using the product ID
-//fetch(`/api/products/${productId}`)
-//  .then(response => response.json())
-//  .then(product => {
-  // Use the product data to populate the screen components
-  //const productTitle = document.getElementById('product-title');
-  //productTitle.textContent = product.title;
+  const{ productId } = route.params;
 
-  //const productImage = document.getElementById('product-image');
-  //productImage.src = product.image;
+  //Action: DISPLAY PRODUCT DETAILS
+  function handleProductDetails(productId) {
+   //1. Retrieve the product data from the database based on the productId
+   const product = getProductsById(productId);
 
-  //const productPrice = document.getElementById('product-price');
-  //productPrice.textContent = `$${product.price}`;
+   //2. Extract the necessary data from the product object
+   useEffect(() => {
+    const product = getProductById(productId);
 
-  // ...
-//  })
-//  .catch(error => {
-//    console.error(error);
-//  });
+    const productTitle = product.title;
+    const productPrice = product.price;
+    const productLongDescription = product.longdescription;
+    const productRating = product.rating;
+    const productReviews = product.reviews;
+   }, []);
 
-export default function ProductDescriptionScreen (props) {
+   //3. Update the state with the product details
+   setTitle(productTitle);
+   setProductPrice(productPrice);
+   setProductLongDescription(productLongDescription);
+   setProductRating(productRating);
+   setReviews(productReviews);
+  }
+
+  //Action: SEARCH BAR PRODUCT QUERY SEARCH
+  const handleSearchQuery = (searchQuery) => {
+    //Search for the product with the given query in the database
+    const searchedProduct = searchForProduct(searchQuery);
+
+    //Navigate to Product Listing Screen with searched product data
+    navigation.navigate("ProductLisingScreen.js", { products: [searchProduct] });
+  }
+
+  //Action: ADD REVIEW AND RATING TO THE PRODUCTS
+  function handleAddReview(rating, review) {
+    //Get the product ID of the currently displayed product
+    const productId = getProductDetails().id;
+
+    //Construct the review object to be saved to the database
+    const newReview = {
+      rating: rating,
+      review: review
+    };
+
+    //Save the review to the database for the product with the corresponding ID
+    db.products.update(
+      { id: productId},
+      { $push: { reviews: newReview } }
+    );
+  }
+
+
+  //Action: ADD PRODUCT TO CART
+  function handleAddToCart(productId) {
+    const product = getProductById(productId);
+    //Add product to cart
+    const updatedCart = [...cart, product];
+    setCartItems(updatedCart);
+
+    //Display a message to confirm that the product has been added to the cart
+    alert("${product.title} has been added to your cart.");
+  }
+
+  //Action: HANDLE RELATED PRODUCTS
+  function handleRelatedProducts(productId) {
+    const relatedProducts = getRelatedProductsById(productId);
+
+    //Display related products on the screen
+    const relatedProductsContainer = document.querySelector("#related-products-container");
+    relatedProductsContainer.innerHTML = "";
+
+    relatedProducts.forEach(product => {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card");
+
+      const productDescription = document.createElement("p");
+      productDescription.textContent = product.shortDescription;
+
+      const productPrice = document.createElement("p");
+      productRating.textContent = "$${product.price}";
+
+      const productRating = document.createElement("p");
+      productRating.textContent = "Rating: ${product.rating}";
+
+      productCard.appendChild(productTitle);
+      productCard.appendChild(productDescription);
+      productCard.appendChild(productPrice);
+      productCard.appendChild(productRating);
+
+      relatedProductsContainer.appendChild(productCard);
+    });
+  }
+
+  //Navigation: PRODUCT LISTING SCREEN
+  function handleProductListingNavigation() {
+    //Navigation to Product Listing Screen
+    navigation.goBack();
+  }
+
+  //Navigation: WISHLIST SCREEN
+  function handleWishlistNavigation() {
+    //Navigation to Wishlist Screen
+    if (isLoggedIn) {
+      navigation.navigate("WishlistScreen.js");
+    } else {
+      navigation.navigate("LoginScreen.js");
+    } 
+  }
+
+  //Navigation: CART SCREEN
+  function handleCartNavigation() {
+    //Navigation to Cart Screen
+    navigation.navigate("ShoppingCartScreen.js");
+  }
+
   return (
     <Group3Layout headerComponent={<HeaderLayout />}
                   productGallery={<ProductGallery />}
@@ -71,3 +172,5 @@ export default function ProductDescriptionScreen (props) {
     />
   );
 };
+
+export default ProductDescriptionScreen;
