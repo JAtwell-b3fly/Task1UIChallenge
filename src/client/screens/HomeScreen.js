@@ -20,23 +20,21 @@ const HomeScreen = () => {
 
   //Actions
   //Function to navigate to the Product Listing Screen when SEARCH Icon is clicked
-  function handleSearchProduct (searchTerm) {
-    //******Perform search operation to pull product from database *******
+  function handleSearchProduct (searchQuery) {
     //Make a database call to retrieve the product based on the search item
-    const searchResults = getProductsBySearchTerm(searchTerm);
+    const searchResults = getProductsBySearchQuery(searchQuery);
 
     //Navigate to the Product Listing Screen
-    navigateToProductListingScreen(searchResults);
+    navigation.navigate("ProductListingScreen.js", {searchResults} );
   };
 
   //Function to navigate to the Product Listing Screen when a category is selected
-  function handleCategoryClick (category) {
-    //**** Perform operation to pull products that form part of the selected category from the database
-    //Fetch products from the database that belong to the selected category
-    const products = fetchProductsByCategory(category);
+  const handleCategoryClick = (category) => {
+    // 1. Pull products from the database that match the selected category
+    const filteredProducts = database.filter((product) => product.category === category);
 
-    //Navigate to the Product Listing Screen and pass in the products data as props
-    navigateToProductListingScreen(products);
+    // 2. Navigate to the Product Listing Screen and pass in the filtered products as props
+    history.push("/ProductListingScreen.js", { products: filteredProducts });
   };
 
   //Function to pull products for the Recommended Products displayed on the Home Screen
@@ -55,18 +53,18 @@ const HomeScreen = () => {
 
   //Navigation
   //Function to navigate to the Customer Ratings and Reviews Screen
-  function handleCustomerReviews() {
-    navigation.navigate("CustomerReviews.js");
-  }
+  function handleReviewsNavigation() {
+    navigation.navigate("CustomerReviewsScreen.js");
+  };
 
   //Function to navigate to the Company Missions and Visions Screen
-  const handleCompanyMission = () => {
-    navigation.navigate("CompanyMission.js");
+  function handleMissionNavigation () {
+    navigation.navigate("CompanyMissionScreen.js");
   };
 
   //Function to navigate to the Certifications Screen
-  const handleCertifications = () => {
-    navigation.navigate("Certifications.js");
+  function handleCertificationsNavigation () {
+    navigation.navigate("CertificationsScreen.js");
   };
 
   return (
