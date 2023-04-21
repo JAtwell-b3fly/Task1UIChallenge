@@ -151,7 +151,7 @@ const ShoppingCart = () => {
       deleteButton.addEventListener("click", () => {
         handleCartItemRemoval(productId);
       });
-      cartItemInfoContainer.appendChild(deletebutton);
+      cartItemInfoContainer.appendChild(deleteButton);
       cartItemContainer.appendChild(cartItemInfoContainer);
 
       //Append delete button to cart item element

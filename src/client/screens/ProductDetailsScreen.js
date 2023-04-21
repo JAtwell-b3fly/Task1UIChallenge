@@ -152,7 +152,7 @@ const ProductDescriptionScreen = () => {
   //Navigation: CART SCREEN
   function handleCartNavigation() {
     //Navigation to Cart Screen
-    navigation.navigate("ShoppingCartScreen.js");
+    navigation.navigate("CartScreen.js");
   }
 
   return (
