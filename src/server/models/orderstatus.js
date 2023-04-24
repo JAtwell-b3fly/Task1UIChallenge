@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
     // Finder Methods
+    
     static findAllOrderStatuses() {
       // findAllOrderStatuses(): Fetches all order statuses from the database.
       try {

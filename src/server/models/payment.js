@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
     // Finder Methods 
+    
   static async findAllPayments() {
     // findAllPayments(): Fetches all payments from the database.
     try {

@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
     // Finder methods
+    
   static findAllAbouts() {
     // findAllAbouts(): Find all abouts in the database
     return About.findAll();

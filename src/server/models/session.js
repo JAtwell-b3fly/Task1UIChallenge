@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     
     // Finder methods
+    
     static findAllSessions() {
       // findAllSessions(): returns all sessions.
       return Session.findAll();

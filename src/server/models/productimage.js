@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
     // Finder Methods 
+    
     static getAllProductImages(productId) {
       // getAllProductImages(productId): Retrieves all product images for a given product ID.
       return ProductImage.findAll({

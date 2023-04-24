@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     
     // Finder Methods
+    
     static async findAllSafetyInformation() {
       // findAllSafetyInformation(): This method retrieves all safety information
        // records from the database using the

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     
     //Finder methods
+    
     static async getAllProducts() {
       //findAllProducts: This is a static method that returns all products in the database. 
       // It uses the findAll method provided by Sequelize.

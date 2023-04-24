@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
     
-    // Finder Methodsk
+    // Finder Methods
+    
     static findAllSettings() {
      // findAllSettings(): Retrieves all settings records from the database and returns 
       // them as an array of objects.

@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
-    // Finder Methods
+     // Finder Methods
+     
     static async findAllBillingInformation() {
       try {
         const billingInformation = await BillingInformation.findAll();
