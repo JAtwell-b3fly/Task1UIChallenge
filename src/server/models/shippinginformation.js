@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
     
+      // Finder Methods
+      
   // Create a new shipping information record
   static createShippingInformation(user_id, first_name, last_name, email, password, phone_number, address) {
     return ShippingInformation.create({

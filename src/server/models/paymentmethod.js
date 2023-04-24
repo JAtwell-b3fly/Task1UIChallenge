@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     // Finder Methods
+    
     static findAllPaymentMethods() {
       // findAllPaymentMethods(): Retrieves all payment methods from the database.
       return PaymentMethod.findAll();

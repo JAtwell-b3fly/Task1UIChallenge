@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Avatars.belongsTo(models.User, { foreignKey: 'user_id' });
     }
+
     // Finder methods
+    
     static findAllAvatars() {
     //findAllAvatars(): Returns all avatars.
       return Avatars.findAll();

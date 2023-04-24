@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     
    //finder Methods
+   
     static findAllPolicies() {
       // findAllPolicies(): Finds all RefundPolicy instances in the
       // database and returns them as an array.

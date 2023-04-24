@@ -13,7 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       
     }
+
     // Finder Methods
+    
     static getAllCategories() {
       // getAllCategories(): Retrieves all categories from the database.
       return Categories.findAll();

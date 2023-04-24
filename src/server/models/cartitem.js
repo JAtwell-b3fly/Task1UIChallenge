@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     // Finder Methods 
+    
     static getAllCartItems(userId) {
       // getAllCartItems(userId): Retrieves all cart items for a given user ID.
       return CartItem.findAll({

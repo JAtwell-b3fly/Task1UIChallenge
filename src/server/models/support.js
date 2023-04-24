@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     
     // Finder Methods
+    
     static createSupport(supportData) {
       // createSupport(supportData): This method creates a new Support record with the 
       return Support.create(supportData);

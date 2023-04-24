@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    // Finder Methods
     
 // Find all product ingredients
 static async findAllProductIngredients() {
