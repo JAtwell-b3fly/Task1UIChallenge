@@ -13,6 +13,7 @@ import { Group2Layout } from '../../Screens/Layouts/Group2LayoutTest';
 
 import styles from '../src/shared/ProductListingScreenStyles.css'; //import the custom created stylesheet
 
+import {getProductById} from "../api/products";
 
 const ProductListingScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
