@@ -29,6 +29,8 @@ const CheckoutScreen = () => {
   const dispatch = useDispatch();
 
     //Initialise state for form input values and subnission status
+    const [searchQuery, setSearchQuery] = useState("");
+    
     const [shipfirstName, setShipFirstName] = useState("");
     const [billfirstName, setBillFirstName] = useState("");
     const [shiplastName, setShipLastName] = useState("");
@@ -179,6 +181,16 @@ const CheckoutScreen = () => {
   //Handle navigation to the previous page Cart Screen
   const handleBack = () => {
     navigation.navigate("CartScreen.js");
+  }
+
+  //Search Bar Query Seach Function
+  //Action: SEARCH BAR PRODUCT QUERY SEARCH
+  const handleSearchQuery = (searchQuery) => {
+    //Search for the product with the given query in the database
+    const searchedProduct = searchForProduct(searchQuery);
+
+    //Navigate to Product Listing Screen with searched product data
+    navigation.navigate("ProductLisingScreen.js", { products: [searchProduct] });
   }
 
   return (
