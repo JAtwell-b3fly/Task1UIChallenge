@@ -241,6 +241,10 @@ const OrderConfirmationScreen = () => {
     setOrderTotal(0);
   };
 
+  //Navigate to Order Status Screen when the confirm button is clicked
+  const handleConfirmPress = () => {
+    navigation.navigate("OrderStatusScreen.js");
+  }
   return (
       <Group13Layout headercomponent={<HeaderLayout />}
                     headinglabel={<CLabel />}
