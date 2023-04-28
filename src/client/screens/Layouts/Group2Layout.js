@@ -1,4 +1,4 @@
-import { Box, VStack, HStack, Container,Spacer } from 'native-base';
+import { Box, VStack, HStack, Container } from 'native-base';
 
 export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, headinglabel, catalogboxsection, tilessection }) => {
     //Home Screen: (headingcomponent,categoryfilter,welcomesection,headinglabel,catalogboxsection,tilessection)
@@ -10,8 +10,8 @@ export const Group2Layout = ({ headercomponent, categoryfilter, welcomesection, 
     const isWishlistScreen = !isHomeScreen && !isProductListingScreen;
 
     return (
-      <Container bg="lightBlue.100" safeArea flex={1}>
-        <Spacer />
+      <Container bg="lightBlue.100"  flex={1}>
+        
         <VStack flex={1} space={4} alignItems="center">
           <Box>{headercomponent}</Box>
           <Box w="100%" px={4}>
