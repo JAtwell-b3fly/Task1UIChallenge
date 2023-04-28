@@ -3,7 +3,7 @@
       "username": "admin",
       "password": "Pa55w0rd123!",
       "database": "products_db",
-      "host": "dev-ccm.cpdahw04nfaz.eu-north-1.rds.amazonaws.com",
+      "host": "devtest.ct9sx3gavc6j.af-south-1.rds.amazonaws.com",
       "dialect": "mysql"
     }
     
