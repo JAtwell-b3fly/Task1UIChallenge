@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity, FlatList, View, Text, Image, StyleSheet } from 'react-native';
 
 import { HeaderLayout } from '../../components/Layouts/Header'; //import custom created header component
 import { ProductList } from '../../components/Forms/ProductList'; //import custom created wishlish catalogbox component
@@ -7,37 +8,100 @@ import { CLabel } from '../../components/common/Label'; //import the custom crea
 import { Group2Layout } from '../../Screens/Layouts/Group2LayoutTest';
 
 import styles from '../src/shared/WishlistScreenStyles.css'; //import the custom created stylesheet
+import { db } from '../firebase';
+import { useCart } from '../contexts/CartContext';
 
-//Actions
-const filterComponent = document.querySelector('#wishlist-filter');
+const Wishlist = () => {
 
-filterComponent.addEventListener('change', () => {
-  // Get the selected filter options
-  const selectedOptions = getSelectedOptions(filterComponent);
+  //State management
+  const navigation = useNavigation();
+  const [wishlistItems, setWishlistItems] = useState([]);
 
-  // Update the products displayed in the catalog box
-  WishlistCatalogBox.updateProducts(selectedOptions);
-});
+  //Action
+  useEffect(() => {
+    // Fetch wishlist items from the database
+    const fetchWishlistItems = async () => {
+      try {
+        const snapshot = await db.collection('wishlist').get();
+        const items = [];
+  
+        snapshot.forEach((doc) => {
+          const { productId, productTitle, productImage, productShortDescription, productLongDescription, productPrice, productRating, productReview } = doc.data();
+  
+          // Add only necessary data to items array
+          items.push({ productId, productTitle, productImage, productShortDescription, productPrice });
+        });
+  
+        setWishlistItems(items);
+      } catch (error) {
+        console.error('Error fetching wishlist items', error);
+      }
+    };
+  
+    fetchWishlistItems();
+  }, []);
 
-const paginationControl = document.querySelector('#wishlist-pagination');
+  //Action
+  const handleProductPress = (productId) => {
+    // Navigate to Wishlist Product Details Screen
+    navigation.navigate('WishlistProductDetailsScreen.js', { productId });
+  };
 
-paginationControl.addEventListener('swipe', (event) => {
-  // Determine the direction of the swipe (left or right)
-  const direction = event.detail.direction;
+  //Action
+  const addToCart = async (productId) => {
+    try {
+      // Retrieve product details from the database using its productId
+      const productRef = db.collection('products').doc(productId);
+      const productDoc = await productRef.get();
+  
+      if (!productDoc.exists) {
+        console.error(`Product with ID ${productId} does not exist`);
+        return;
+      }
+  
+      // Add the product to the cart
+      const productData = productDoc.data();
+      const { title, price } = productData;
+      const item = {
+        productId,
+        title,
+        price,
+        quantity: 1,
+      };
+      const { addItem } = useCart(); // Access the addItem function from the CartContext
+      addItem(item);
+    } catch (error) {
+      console.error('Error adding product to cart', error);
+    }
+  };
 
-  // Get the current page number and total number of pages
-  const currentPage = WishlistCatalogBox.getCurrentPage();
-  const totalPages = WishlistCatalogBox.getTotalPages();
+  //Action
+  const handleWishlistButtonPress = async () => {
+    try {
+      // Remove product from wishlist in database
+      await db.collection('wishlist').doc(productId).delete();
+      // Remove product from wishlistItems in state
+      setWishlistItems(wishlistItems.filter((item) => item.productId !== productId));
+      // Update wishlistCount in context
+      setWishlistCount(wishlistCount - 1);
+    } catch (error) {
+      console.error('Error removing product from wishlist', error);
+    }
+  };
 
-  // Update the displayed products in the catalog box based on the swipe direction
-  if (direction === 'left' && currentPage < totalPages) {
-    WishlistCatalogBox.showNextPage();
-  } else if (direction === 'right' && currentPage > 1) {
-    WishlistCatalogBox.showPreviousPage();
-  }
-});
+  //Navigation
+  const handleCartNavigation = () => {
+    // Navigate to Shopping Cart Screen
+    navigation.navigate('CartScreen.js');
+  };
 
-export default function WishlistScreen () {
+  //Navigation
+  const handleWishlistNavigation = () => {
+    // Reload Wishlist Screen
+    navigation.replace('WishlistScreen.js');
+  };
+
+
   return(
     <Group2Layout headercomponent={<HeaderLayout />}
                   headinglabel={<CLabel />}
@@ -46,4 +110,5 @@ export default function WishlistScreen () {
   );
 }
 
+export default Wishlist;
 
