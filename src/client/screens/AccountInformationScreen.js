@@ -14,49 +14,59 @@ const AccountInformation = () => {
 
   const navigation = useNavigation();
 
-  // state variables for account settings data
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
+// Set initial state for form data and account data
+const [formData, setFormData] = useState({
+  firstName: '',
+  lastName: '',
+  physicalAddress: '',
+  emailAddress: ''
+});
+const [accountData, setAccountData] = useState({
+  firstName: '',
+  lastName: '',
+  physicalAddress: '',
+  emailAddress: ''
+});
 
-  // state variables for form view and edit mode
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [editButtonText, setEditButtonText] = useState('Edit');
-  const [accountSettingsInfo, setAccountSettingsInfo] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
-  });
-
-  // retrieve account settings data from the database
-  useEffect(() => {
-    const fetchData = async () => {
-      const user = await db.collection('users').doc('userId').get();
-      setName(user.data().name);
-      setEmail(user.data().email);
-      setPassword(user.data().password);
-      setPhone(user.data().phone);
-    };
-    fetchData();
-  }, []);
-
-  // submit updated account settings data to the database
-  const handleSubmit = async () => {
-    await db.collection('users').doc('userId').update({
-      name: name,
-      email: email,
-      password: password,
-      phone: phone,
+// Fetch account data from the database using useEffect hook
+useEffect(() => {
+  axios.get('/api/accountData')
+    .then(response => {
+      setAccountData(response.data);
+    })
+    .catch(error => {
+      console.log(error);
     });
-    setIsEditMode(false);
-    setEditButtonText('Edit');
-  };
+}, []);
+
+// Function to handle form input changes
+const handleInputChange = (event) => {
+  const { name, value } = event.target;
+  setFormData(prevState => ({
+    ...prevState,
+    [name]: value
+  }));
+}
+
+// Function to handle form submission
+const handleFormSubmit = (event) => {
+  event.preventDefault();
+  // Submit form data to the database using axios
+  axios.post('/api/updateAccountData', formData)
+    .then(response => {
+      console.log(response.data);
+      // Reset form data after submission
+      setFormData({
+        firstName: '',
+        lastName: '',
+        physicalAddress: '',
+        emailAddress: ''
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
   const handleEditButtonClick = () => {
     setIsEditMode(true);
@@ -65,13 +75,6 @@ const AccountInformation = () => {
   const handleSaveButtonClick = () => {
     // code to submit and save updated account settings info to database
     setIsEditMode(false);
-  };
-
-  const handleTextInputChange = (name, value) => {
-    setAccountSettingsInfo({
-      ...accountSettingsInfo,
-      [name]: value,
-    });
   };
 
   //SCREENNAV COMPONENT NAVIGATION ACTIONS
