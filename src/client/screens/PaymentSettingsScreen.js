@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {View,VStack,HStack,Container,Text,Center,Heading} from 'native-base';
 
 import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import the custom created header component
@@ -11,59 +12,121 @@ import { Group5Layout } from '../../Screens/Layouts/Group5Layout';
 import axios from 'axios';
 import styles from './styles'; //import the custom stylesheet
 
-//Actions
-const [editing, setEditing] = useState(false);
+
+
+const PaymentSettingsScreen = () => {
+
+  const navigation = useNavigation();
+
+  // Set up state variables
   const [paymentMethods, setPaymentMethods] = useState([]);
-  
-  const handleCheckboxChange = (event) => {
-    setEditing(event.target.checked);
-  };
-  
-  const handleDelete = (paymentMethod) => {
-    const updatedPaymentMethods = paymentMethods.filter(pm => pm.id !== paymentMethod.id);
-    setPaymentMethods(updatedPaymentMethods);
-    axios.delete(`/api/payment-methods/${paymentMethod.id}`)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-  };
-  
-  const handleAdd = () => {
-    const newPaymentMethod = { /* set default properties for new payment method */ };
-    setPaymentMethods([...paymentMethods, newPaymentMethod]);
-  };
-  
-  const handleSave = (updatedPaymentMethod) => {
-    if (updatedPaymentMethod.id) { // existing payment method
-      axios.put(`/api/payment-methods/${updatedPaymentMethod.id}`, updatedPaymentMethod)
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
-    } else { // new payment method
-      axios.post('/api/payment-methods', updatedPaymentMethod)
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
-    }
-    setEditing(false);
+  const [editMode, setEditMode] = useState(false);
+  const [addMode, setAddMode] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [formValues, setFormValues] = useState({
+    accountHolderName: '',
+    cardNumber: '',
+    bankName: '',
+    CVVNumber: '',
+    branchCode: ''
+  });
+
+  // Fetch payment method data from database
+  useEffect(() => {
+    // Code to fetch data from MySQL database goes here
+    // Once data is fetched, update paymentMethods state variable
+    setPaymentMethods(paymentMethodData);
+  }, []);
+
+  // Handle form input changes
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues({ ...formValues, [name]: value });
   };
 
-  /* <h2 style={{ textAlign: 'center' }}>Payment Settings</h2>
-      {editing ? (
-        <PaymentSettingsForm
-          paymentMethods={paymentMethods}
-          onSave={handleSave}
-          onCancel={() => setEditing(false)}
-        />
-      ) : (
-        <PaymentSettingsFormView
-          paymentMethods={paymentMethods}
-          onCheckboxChange={handleCheckboxChange}
-          onAdd={handleAdd}
-          onDelete={handleDelete}
-        />
-      )}
-      <button onClick={() => setEditing(true)}>Edit</button>
-      <button onClick={handleSave}>Save</button> */
+  // Handle edit button click
+  const handleEditButtonClick = (paymentMethod) => {
+    setSelectedPaymentMethod(paymentMethod);
+    setEditMode(true);
+    setAddMode(false);
+    setFormValues(paymentMethod);
+  };
 
-export default function PaymentSettingsScreen () {
+  // Handle add button click
+  const handleAddButtonClick = () => {
+    setSelectedPaymentMethod(null);
+    setAddMode(true);
+    setEditMode(false);
+    setFormValues({
+      accountHolderName: '',
+      cardNumber: '',
+      bankName: '',
+      CVVNumber: '',
+      branchCode: ''
+    });
+  };
+
+  // Handle save button click
+  const handleSaveButtonClick = () => {
+    // Code to save form data to database goes here
+    // Once data is saved, update paymentMethods state variable
+    setPaymentMethods(updatedPaymentMethodData);
+    setEditMode(false);
+    setAddMode(false);
+    setSelectedPaymentMethod(null);
+    setFormValues({
+      accountHolderName: '',
+      cardNumber: '',
+      bankName: '',
+      CVVNumber: '',
+      branchCode: ''
+    });
+  };
+
+  // Handle delete button click
+  const handleDeleteButtonClick = (paymentMethod) => {
+    // Code to delete payment method data from database goes here
+    // Once data is deleted, update paymentMethods state variable
+    setPaymentMethods(updatedPaymentMethodData);
+  };
+
+  //SCREENNAV COMPONENT NAVIGATION BUTTONS
+  // Navigate to AccountSettingsScreen
+const goToAccountSettings = () => {
+  navigation.navigate('AccountInformationScreen.js');
+};
+
+// Navigate to ReturnAndRefundScreen
+const goToReturnAndRefund = () => {
+  navigation.navigate('Return&RefundScreen.js');
+};
+
+// Navigate to OrderScreen
+const goToOrderScreen = () => {
+  navigation.navigate('OrderScreen.js');
+};
+
+// Navigate to CustomerSupportScreen
+const goToCustomerSupport = () => {
+  navigation.navigate('CustomerSupportScreen.js');
+};
+
+// Navigate to SafetyInformationScreen
+const goToSafetyInformation = () => {
+  navigation.navigate('SafetyInformationScreen.js');
+};
+
+// Navigate to SystemControlPanel
+const goToSystemControlPanel = () => {
+  navigation.navigate('SystemControlPanel.js');
+};
+
+// Navigate to GeneralSettingsScreen
+const goToGeneralSettings = () => {
+  navigation.navigate('GeneralSettingsScreen.js');
+};
+
+
   return (
     <Group5Layout headercomponent2={<SecondHeaderLayout />}
                   screennavcomponent={<ScreenNav />}
@@ -72,3 +135,5 @@ export default function PaymentSettingsScreen () {
     />
   );
 };
+
+export default PaymentSettingsScreen;
