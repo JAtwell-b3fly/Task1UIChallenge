@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 import {View,VStack,HStack,Container,Center,Text} from "native-base";
 
 import { Group9Layout } from "../../Screens/Layouts/Group9Layout";
@@ -9,7 +10,14 @@ import AppVersion from './client/components/Layouts/appVersion';
 import AppDescription from './client/components/Layouts/appDescription';
 import DeveloperInfo from './client/components/Layouts/developerInfo';
 
-export default function AboutScreen () {
+const AboutScreen = () => {
+    const navigation = useNavigation();
+
+    // handle button press to navigate to About Screen
+    const handleBackButtonPress = () => {
+        navigation.navigate('SettingsScreen.js');
+    };
+
     return(
         <Group9Layout applogoheader={<HeaderLayout />}
                         appname={<AppName />}
@@ -19,3 +27,5 @@ export default function AboutScreen () {
         />
     )
 }
+
+export default AboutScreen;
