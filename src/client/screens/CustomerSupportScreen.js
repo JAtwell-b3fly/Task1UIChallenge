@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import {View,VStack,HStack,Heading,Center,Text} from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+import { getCustomerSupportDetails, submitFeedback, getFAQs } from '../api/customerSupport';
 
 // Import necessary components and styles
 import { SecondHeaderLayout } from '../../components/Layouts/HeaderOther'; //import the custom created new header component
@@ -12,40 +14,72 @@ import { Group11Layout } from '../../Screens/Layouts/Group11Layout';
 import styles from './CustomerSupport.css'; //import the external stylesheet
 import { CLabel } from '../../components/common/Label';
 
-//Actions
-  // Define state to store FAQ dialog visibility
-  const [faqDialogVisible, setFAQDialogVisible] = useState(false);
-  const [selectedFAQ, setSelectedFAQ] = useState(null);
+const CustomerSupport = () => {
 
-  // Define function to handle FAQ button click
-  const handleFAQClick = (faq) => {
-    setSelectedFAQ(faq);
-    setFAQDialogVisible(true);
+  const navigation = useNavigation();
+
+  // State variables
+  const [companyName, setCompanyName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [physicalAddress, setPhysicalAddress] = useState("");
+  const [contactNumbers, setContactNumbers] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [userId, setUserId] = useState("");
+  const [faqs, setFAQs] = useState([]);
+
+  // Get customer support details from the database
+  useEffect(() => {
+    const customerSupportDetails = getCustomerSupportDetails();
+    setCompanyName(customerSupportDetails.companyName);
+    setEmailAddress(customerSupportDetails.emailAddress);
+    setPhysicalAddress(customerSupportDetails.physicalAddress);
+    setContactNumbers(customerSupportDetails.contactNumbers);
+  }, []);
+
+  // Submit feedback to the database
+  const handleFeedbackSubmit = () => {
+    const feedbackData = { feedbackMessage, userId };
+    submitFeedback(feedbackData);
+    setFeedbackMessage("");
+  }
+
+  // Get frequently asked questions from the database
+  useEffect(() => {
+    const FAQs = getFAQs();
+    setFAQs(FAQs);
+  }, []);
+
+   // Navigate to the FAQ details screen when an FAQ button is pressed
+   const handleFAQButtonPress = (buttonId, FAQId) => {
+    navigation.navigate('FAQDetailsScreen.js', { buttonId, FAQId });
+  }
+
+  //SCREENNAV NAVIGATION
+
+  const handleAccountSettingsPress = () => {
+    navigation.navigate('AccountInformationScreen.js');
   };
 
-  /* {FAQs.map((faq) => (
-          <div key={faq.id} className="CustomerSupport-faq-item">
-            <button className="CustomerSupport-faq-button" onClick={() => handleFAQClick(faq)}>
-              {faq.question}
-            </button>
-            <button className="CustomerSupport-faq-icon-button" onClick={() => handleFAQClick(faq)}>
-              <i className="fa fa-info-circle" />
-            </button>
-          </div>
-        ))} */
+  const handlePaymentSettingsPress = () => {
+    navigation.navigate('PaymentSettingsScreen.js');
+  };
 
-  /* {faqDialogVisible && (
-        <div className="CustomerSupport-faq-dialog">
-          <button className="CustomerSupport-faq-dialog-close" onClick={() => setFAQDialogVisible(false)}>
-            <i className="fa fa-times-circle" />
-          </button>
-          <h3 className="CustomerSupport-faq-dialog-question">{selectedFAQ.question}</h3>
-          <p className="CustomerSupport-faq-dialog-answer">{selectedFAQ.answer}</p>
-        </div>
-      )} */
+  const handleReturnRefundPress = () => {
+    navigation.navigate('Return&RefundScreen.js');
+  };
 
-// Define the Customer Support screen component
-export default function CustomerSupport() {
+  const handleOrderPress = () => {
+    navigation.navigate('OrderScreen.js');
+  };
+
+  const handleSafetyInformationPress = () => {
+    navigation.navigate('SafetyInformationScreen.js');
+  };
+  
+  const handleCustomerSupportPress = () => {
+    navigation.navigate('CustomerSupportScreen.js');
+  };
+
   return (
     <Group11Layout headercomponent2={<SecondHeaderLayout />}
                     screennavcomponent={<ScreenNav />}
@@ -58,3 +92,5 @@ export default function CustomerSupport() {
     />
   );
 }
+
+export default CustomerSupport;
