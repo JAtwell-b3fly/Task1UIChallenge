@@ -1,0 +1,82 @@
+.App {
+  text-align: left;
+  font-size:x-large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #fffffe;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.MainBox{
+  height: 600px;
+  width: 1000px;
+  background-color: #a3d0d3;
+  border: #fcfeff 5px solid;
+  border-radius: 5%;
+  margin-left: 400px;
+  margin-right: 100px;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  color: black;
+}
+
+.Left{
+  width: 350px;
+  height: 600px;
+  background-color: #b1d7da;
+  border-radius: 7%;
+}
+
+.Right{
+  width: 650px;
+  height: 600px;
+  background-color: #ffffff;
+  border-radius: 5%;
+  align-items: center;
+  color: darkgray;
+}
+
+.RightHeading{
+  color: black;
+  font-weight: bold;
+  align-items: center;
+}
+
+.input{
+  width:"300px";
+  height:"30px";
+  border-color: #feffff;
+}
